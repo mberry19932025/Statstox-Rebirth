@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VIP | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="vip.html" class="active">vip</a>
+  <a href="subscriptions.html">subscriptions</a>
+  <a href="notifications.html">notifications</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>VIP</h1>
+    <p class="small">rooms are billed per room • tier-gated access</p>
+  </header>
+
+  <p id="vipStatus" class="small"></p>
+  <ul id="vipRoomList"></ul>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/vip.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

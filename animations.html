@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animations | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- GLOBAL NAV -->
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="all-players.html">all players</a>
+  <a href="animations.html" class="active">animations</a>
+  <a href="community.html">community</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <img
+      src="images/statstox-logo-placeholder.png"
+      alt="statstox logo"
+      class="page-logo"
+    />
+    <h1>Animations</h1>
+    <p>visual breakdowns of signals, projections, and the statstox system</p>
+  </header>
+
+  <!-- FILTER -->
+  <section class="filters">
+    <select id="animationsCategory" aria-label="filter animations">
+      <option value="ALL">all categories</option>
+      <option value="education">education</option>
+      <option value="market">market concepts</option>
+      <option value="brand">brand</option>
+    </select>
+  </section>
+
+  <p id="animationsStatus" class="status"></p>
+
+  <section
+    id="animationsGrid"
+    class="animations-grid"
+    aria-live="polite"
+  ></section>
+</main>
+
+<!-- FOOTER (SAME AS ALL PLAYERS) -->
+<footer class="global-footer">
+
+  <div class="footer-icons">
+    <img src="images/icon-stats.png" alt="stats & signals" />
+    <img src="images/icon-contests.png" alt="contests" />
+    <img src="images/icon-community.png" alt="community" />
+    <img src="images/icon-compliance.png" alt="dfs compliant" title="DFS-compliant contests" />
+  </div>
+
+  <div class="footer-social">
+    <button id="socialToggle" aria-label="social links">
+      <img src="images/icon-social.png" alt="social icon" />
+    </button>
+
+    <div id="socialMenu" class="social-menu hidden">
+      <a href="#"><img src="images/icon-x.png" alt="x twitter" /></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="instagram" /></a>
+      <a href="#"><img src="images/icon-youtube.png" alt="youtube" /></a>
+    </div>
+  </div>
+
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<!-- GLOBAL CORE -->
+<script src="js/ui.js"></script>
+
+<!-- GLOBAL SYSTEMS -->
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- PAGE SCRIPT -->
+<script src="js/animations.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

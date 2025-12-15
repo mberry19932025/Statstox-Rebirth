@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="signup.html" class="active">sign up</a>
+  <a href="login.html">login</a>
+</nav>
+
+<main class="auth-layout">
+  <section class="auth-card">
+    <img src="images/statstox-logo-placeholder.png" alt="statstox logo" class="auth-logo" />
+    <h1>Create Account</h1>
+    <p class="small">start free • upgrade anytime</p>
+
+    <form id="signupForm">
+      <label>email
+        <input id="signupEmail" type="email" placeholder="you@example.com" required />
+      </label>
+      <label>password
+        <input id="signupPassword" type="password" placeholder="••••••••" required />
+      </label>
+      <button type="submit" class="primary-btn">sign up</button>
+    </form>
+
+    <p id="signupStatus" class="small status"></p>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/signup.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Market Feed | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+
+  <div class="nav-dropdown">
+    <button class="nav-btn active">market</button>
+    <div class="dropdown-menu">
+      <a href="market-lobby.html">market lobby</a>
+      <a href="market-arena.html">market arena</a>
+      <a href="market-feed.html" class="active">market feed</a>
+      <a href="market-leaderboard.html">market leaderboard</a>
+    </div>
+  </div>
+
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Market Feed</h1>
+    <p class="small">signals, momentum shifts, and market context</p>
+  </header>
+
+  <section>
+    <p id="marketFeedStatus" class="small"></p>
+    <ul id="marketFeedList"></ul>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/market-feed.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

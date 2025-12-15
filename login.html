@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="feed.html">feed</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="login.html" class="active">login</a>
+</nav>
+
+<main class="auth-layout">
+  <section class="auth-card">
+    <img
+      src="images/statstox-logo-placeholder.png"
+      alt="statstox logo"
+      class="auth-logo"
+    />
+
+    <h1>Welcome Back</h1>
+    <p class="small">
+      log in to access contests, performance tools, and your portfolio
+    </p>
+
+    <form id="loginForm">
+      <label>
+        email
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="you@example.com"
+          required
+        />
+      </label>
+
+      <label>
+        password
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="••••••••"
+          required
+        />
+      </label>
+
+      <button type="submit" class="primary-btn">
+        log in
+      </button>
+    </form>
+
+    <p id="loginStatus" class="small status"></p>
+
+    <div class="auth-footer">
+      <p class="small">
+        new here?
+        <a href="signup.html">create an account</a>
+      </p>
+
+      <p class="small muted">
+        pro & elite tiers unlock advanced performance tools
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/login.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

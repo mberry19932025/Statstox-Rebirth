@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contest Lobby | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="all-players.html">all players</a>
+  <a href="animations.html">animations</a>
+  <a href="avatars.html">avatars</a>
+  <a href="badges.html">badges</a>
+  <a href="community.html">community</a>
+  <a href="contest-lobby.html" class="active">contests</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+
+  <button id="profileToggle" aria-label="profile">
+    <img src="images/icon-profile.png" alt="profile" />
+  </button>
+</nav>
+
+<main>
+  <header class="page-header">
+    <img src="images/statstox-logo-placeholder.png" alt="statstox logo" />
+    <h1>Arena Gateway</h1>
+    <p>choose how you want to compete</p>
+  </header>
+
+  <p id="contestLobbyStatus" class="status"></p>
+  <section id="contestLobbyGrid" class="contest-grid"></section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox</p>
+</footer>
+
+<!-- GLOBAL CORE -->
+<script src="js/ui.js"></script>
+
+<!-- PAGE-SPECIFIC UTILS -->
+<script src="js/utils/tierutils.js"></script>
+
+<!-- GLOBAL SYSTEMS -->
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- PAGE SCRIPT -->
+<script src="js/contest-lobby.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="profile.html" class="active">profile</a>
+  <a href="portfolio.html">portfolio</a>
+  <a href="performance-heatup.html">performance</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Your Profile</h1>
+    <p class="small">account overview and tier access</p>
+  </header>
+
+  <section class="profile-card">
+    <p><strong>user:</strong> <span id="profileName"></span></p>
+    <p><strong>tier:</strong> <span id="profileTier"></span></p>
+
+    <h3>perks</h3>
+    <ul id="profilePerks"></ul>
+
+    <button id="upgradeBtn" class="primary-btn">
+      upgrade tier
+    </button>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

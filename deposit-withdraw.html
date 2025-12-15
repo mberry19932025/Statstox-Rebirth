@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deposit & Withdrawal | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="all-players.html">all players</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="contest-arena.html">arena</a>
+  <a href="deposit-withdrawal.html" class="active">wallet</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+
+  <button id="profileToggle" aria-label="profile">
+    <img src="images/icon-profile.png" alt="profile" />
+  </button>
+</nav>
+
+<main>
+  <header class="page-header">
+    <img src="images/statstox-logo-placeholder.png" alt="statstox logo" class="page-logo" />
+    <h1>Wallet</h1>
+    <p id="dwStatus" class="small"></p>
+  </header>
+
+  <!-- BALANCES -->
+  <section class="dw-balances">
+    <div class="dw-balance-card">
+      <p class="small"><strong>cash balance</strong></p>
+      <p class="big" id="dwBalanceUsd">$0.00</p>
+    </div>
+    <div class="dw-balance-card">
+      <p class="small"><strong>stacked coins</strong></p>
+      <p class="big" id="dwBalanceCoins">0</p>
+    </div>
+  </section>
+
+  <!-- DFS COMPLIANCE PLACEHOLDERS -->
+  <section class="dw-compliance">
+    <h2>verification (backend later)</h2>
+    <ul class="small">
+      <li>age verification & identity (KYC)</li>
+      <li>location check (state eligibility)</li>
+      <li>fraud protection + chargeback controls</li>
+      <li>crypto support requires AML + confirmations</li>
+    </ul>
+  </section>
+
+  <!-- TABS -->
+  <section class="dw-tabs">
+    <button id="dwTabDeposit" class="dw-tab active">deposit</button>
+    <button id="dwTabWithdraw" class="dw-tab">withdraw</button>
+  </section>
+
+  <!-- DEPOSIT PANEL -->
+  <section id="dwPanelDeposit">
+    <h2>deposit funds</h2>
+
+    <form id="dwDepositForm">
+      <label>deposit method
+        <select id="dwDepositMethod" required>
+          <option value="card">card (visa/mastercard)</option>
+          <option value="ach">bank transfer (ach)</option>
+          <option value="paypal">paypal</option>
+          <option value="applepay">apple pay</option>
+          <option value="googlepay">google pay</option>
+          <option value="btc">bitcoin (coming soon)</option>
+          <option value="eth">ethereum (coming soon)</option>
+        </select>
+      </label>
+
+      <div id="dwDepositMethodFields" class="dw-fields"></div>
+
+      <button type="submit" class="primary-btn">submit deposit</button>
+      <p class="small">note: deposits are placeholders until backend payment providers are connected.</p>
+    </form>
+  </section>
+
+  <!-- WITHDRAW PANEL -->
+  <section id="dwPanelWithdraw" class="hidden">
+    <h2>withdraw funds</h2>
+
+    <form id="dwWithdrawForm">
+      <label>withdraw method
+        <select id="dwWithdrawMethod" required>
+          <option value="ach">bank transfer (ach)</option>
+          <option value="paypal">paypal</option>
+          <option value="btc">bitcoin (coming soon)</option>
+          <option value="eth">ethereum (coming soon)</option>
+        </select>
+      </label>
+
+      <div id="dwWithdrawMethodFields" class="dw-fields"></div>
+
+      <button type="submit" class="primary-btn">submit withdrawal</button>
+      <p class="small">note: withdrawals require verification and backend approvals.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="global-footer">
+
+  <div class="footer-icons">
+    <img src="images/icon-stats.png" alt="stats & signals" />
+    <img src="images/icon-contests.png" alt="contests" />
+    <img src="images/icon-community.png" alt="community" />
+    <img src="images/icon-compliance.png" alt="dfs compliant" />
+  </div>
+
+  <div class="footer-social">
+    <button id="socialToggle" aria-label="social links">
+      <img src="images/icon-social.png" alt="social icon" />
+    </button>
+
+    <div id="socialMenu" class="social-menu hidden">
+      <a href="#"><img src="images/icon-x.png" alt="x twitter" /></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="instagram" /></a>
+      <a href="#"><img src="images/icon-youtube.png" alt="youtube" /></a>
+    </div>
+  </div>
+
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<!-- GLOBAL CORE -->
+<script src="js/ui.js"></script>
+
+<!-- GLOBAL SYSTEMS -->
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- PAGE SCRIPT -->
+<script src="js/deposit-withdrawal.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

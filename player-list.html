@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Player List | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="all-players.html">all players</a>
+  <a href="player-list.html" class="active">player list</a>
+  <a href="performance-heatup.html">performance</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Player List</h1>
+    <p class="small">browse players across all supported leagues</p>
+  </header>
+
+  <select id="playerSportFilter">
+    <option value="all">all sports</option>
+    <option value="NFL">NFL</option>
+    <option value="NBA">NBA</option>
+    <option value="MLB">MLB</option>
+  </select>
+
+  <p id="playerListStatus" class="small"></p>
+  <ul id="playerList"></ul>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/player-list.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

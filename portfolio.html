@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="portfolio.html" class="active">portfolio</a>
+  <a href="market.html">market</a>
+  <a href="performance-heatup.html">performance</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Your Portfolio</h1>
+    <p class="small">track performance across your market positions</p>
+  </header>
+
+  <p id="portfolioStatus" class="small"></p>
+  <ul id="portfolioList"></ul>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/portfolio.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

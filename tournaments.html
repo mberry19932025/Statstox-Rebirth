@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tournaments | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="tournaments.html" class="active">tournaments</a>
+  <a href="notifications.html">notifications</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Tournaments</h1>
+    <p class="small">bracket-style events with clear entries and fair payouts</p>
+  </header>
+
+  <p id="tournamentStatus" class="small"></p>
+  <ul id="tournamentList"></ul>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/tournaments.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

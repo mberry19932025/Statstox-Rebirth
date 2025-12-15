@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "J. Rivers",
+    "team": "HOU",
+    "position": "G",
+    "projection": 24.5,
+    "lastGame": "22 pts · 4 reb · 6 ast",
+    "trend": "+3.8%",
+    "price": 5.25,
+    "volatility": "Medium"
+  },
+  {
+    "id": 2,
+    "name": "M. Daniels",
+    "team": "LAL",
+    "position": "F",
+    "projection": 31.0,
+    "lastGame": "28 pts · 9 reb · 3 ast",
+    "trend": "-1.4%",
+    "price": 7.85,
+    "volatility": "High"
+  },
+  {
+    "id": 3,
+    "name": "K. Stone",
+    "team": "NYG",
+    "position": "RB",
+    "projection": 86.5,
+    "lastGame": "104 rush yds · 1 TD",
+    "trend": "+5.2%",
+    "price": 9.10,
+    "volatility": "High"
+  },
+  {
+    "id": 4,
+    "name": "D. Hale",
+    "team": "SEA",
+    "position": "WR",
+    "projection": 68.0,
+    "lastGame": "7 rec · 88 yds",
+    "trend": "+1.1%",
+    "price": 6.40,
+    "volatility": "Medium"
+  },
+  {
+    "id": 5,
+    "name": "R. Vega",
+    "team": "BOS",
+    "position": "SP",
+    "projection": 6.5,
+    "lastGame": "6.0 IP · 8 K",
+    "trend": "+2.0%",
+    "price": 4.90,
+    "volatility": "Low"
+  }
+]

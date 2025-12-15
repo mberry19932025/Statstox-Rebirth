@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DFS Feed | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="all-players.html">all players</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="dfs-feed.html" class="active">dfs feed</a>
+  <a href="deposit-withdrawal.html">wallet</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+
+  <button id="profileToggle" aria-label="profile">
+    <img src="images/icon-profile.png" alt="profile" />
+  </button>
+</nav>
+
+<main>
+  <header class="page-header">
+    <img src="images/statstox-logo-placeholder.png" alt="statstox logo" class="page-logo" />
+    <h1>DFS Feed</h1>
+    <p class="small">live signals, projections, and momentum insights</p>
+  </header>
+
+  <!-- FILTERS -->
+  <section class="dfs-filters">
+    <input
+      type="text"
+      id="dfsSearch"
+      placeholder="search players or signals"
+    />
+
+    <select id="dfsFilterSport">
+      <option value="all">all sports</option>
+      <option value="NFL">NFL</option>
+      <option value="NBA">NBA</option>
+      <option value="MLB">MLB</option>
+      <option value="NHL">NHL</option>
+      <option value="WWE">WWE</option>
+      <option value="MLS">MLS</option>
+      <option value="Tennis">Tennis</option>
+      <option value="Golf">Golf</option>
+      <option value="Boxing">Boxing</option>
+    </select>
+
+    <select id="dfsFilterTier">
+      <option value="all">all tiers</option>
+      <option value="free">free</option>
+      <option value="pro">pro</option>
+      <option value="elite">elite</option>
+    </select>
+  </section>
+
+  <!-- FEED -->
+  <section class="dfs-feed">
+    <p id="dfsFeedStatus" class="small"></p>
+    <ul id="dfsFeedList" class="dfs-feed-list"></ul>
+  </section>
+</main>
+
+<footer class="global-footer">
+
+  <div class="footer-icons">
+    <img src="images/icon-stats.png" alt="stats & signals" />
+    <img src="images/icon-contests.png" alt="contests" />
+    <img src="images/icon-community.png" alt="community" />
+    <img src="images/icon-compliance.png" alt="dfs compliant" />
+  </div>
+
+  <div class="footer-social">
+    <button id="socialToggle" aria-label="social links">
+      <img src="images/icon-social.png" alt="social icon" />
+    </button>
+
+    <div id="socialMenu" class="social-menu hidden">
+      <a href="#"><img src="images/icon-x.png" alt="x twitter" /></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="instagram" /></a>
+      <a href="#"><img src="images/icon-youtube.png" alt="youtube" /></a>
+    </div>
+  </div>
+
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<!-- GLOBAL CORE -->
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+
+<!-- GLOBAL SYSTEMS -->
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- PAGE SCRIPT -->
+<script src="js/dfs-feed.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

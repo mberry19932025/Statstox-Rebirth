@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StatStox | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html" class="active">home</a>
+  <a href="feed.html">feed</a>
+  <a href="all-players.html">all players</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="deposit-withdrawal.html">wallet</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+
+  <button id="profileToggle" aria-label="profile">
+    <img src="images/icon-profile.png" alt="profile" />
+  </button>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="home-hero">
+    <img
+      src="images/statstox-logo-placeholder.png"
+      alt="statstox logo"
+      class="home-logo"
+    />
+
+    <h1>StatStox</h1>
+    <p class="small">
+      daily fantasy sports powered by signals, momentum, and performance heat
+    </p>
+
+    <div class="hero-actions">
+      <button id="ctaFeed">view signals</button>
+      <button id="ctaContests">enter contests</button>
+      <button id="ctaPlayers">browse players</button>
+    </div>
+  </section>
+
+  <!-- QUICK FEATURES -->
+  <section class="home-features">
+    <article>
+      <h3>signals</h3>
+      <p class="small">
+        real-time DFS signals driven by momentum and projections
+      </p>
+    </article>
+
+    <article>
+      <h3>fair contests</h3>
+      <p class="small">
+        locked projections, clear entry pricing, transparent payouts
+      </p>
+    </article>
+
+    <article>
+      <h3>stacked coins</h3>
+      <p class="small">
+        earn rewards through activity, promos, and performance
+      </p>
+    </article>
+  </section>
+
+  <!-- FEED HOOK -->
+  <div id="feedHook" data-enabled="true"></div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="global-footer">
+  <div class="footer-icons">
+    <img src="images/icon-stats.png" alt="stats & signals" />
+    <img src="images/icon-contests.png" alt="contests" />
+    <img src="images/icon-community.png" alt="community" />
+    <img src="images/icon-compliance.png" alt="dfs compliant" />
+  </div>
+
+  <div class="footer-social">
+    <button id="socialToggle" aria-label="social links">
+      <img src="images/icon-social.png" alt="social icon" />
+    </button>
+    <div id="socialMenu" class="social-menu hidden">
+      <a href="#"><img src="images/icon-x.png" alt="x twitter" /></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="instagram" /></a>
+      <a href="#"><img src="images/icon-youtube.png" alt="youtube" /></a>
+    </div>
+  </div>
+
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<!-- GLOBAL CORE -->
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+
+<!-- GLOBAL SYSTEMS -->
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- PAGE SCRIPT -->
+<script src="js/index.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

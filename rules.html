@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rules | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="rules.html" class="active">rules</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Rules</h1>
+    <p class="small">clear rules • locked entries • fair payouts • responsible play</p>
+  </header>
+
+  <section class="rules-tabs">
+    <button class="tab active" data-rules-tab="contests">contests</button>
+    <button class="tab" data-rules-tab="market">market</button>
+    <button class="tab" data-rules-tab="vip">vip</button>
+  </section>
+
+  <section data-rules-panel="contests">
+    <h3>Contest Rules</h3>
+    <ul>
+      <li>entries lock at the posted lock time</li>
+      <li>once entered, projections are locked for fairness</li>
+      <li>no late edits after lock</li>
+      <li>payouts are pre-defined and transparent</li>
+      <li>responsible play: limits and cooldowns apply (backend later)</li>
+    </ul>
+  </section>
+
+  <section class="hidden" data-rules-panel="market">
+    <h3>Market Rules</h3>
+    <ul>
+      <li>market runs are contests with locked rules</li>
+      <li>signals are informational and not guaranteed outcomes</li>
+      <li>advanced metrics may be tier-gated</li>
+    </ul>
+  </section>
+
+  <section class="hidden" data-rules-panel="vip">
+    <h3>VIP Rules</h3>
+    <ul>
+      <li>vip rooms are subscription-based per room</li>
+      <li>room access is tiered and audited (backend later)</li>
+      <li>no pay-to-win: insights are informational</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

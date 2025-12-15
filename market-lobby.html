@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Market Lobby | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+
+  <div class="nav-dropdown">
+    <button class="nav-btn active">market</button>
+    <div class="dropdown-menu">
+      <a href="market-lobby.html" class="active">market lobby</a>
+      <a href="market-arena.html">market arena</a>
+      <a href="market-feed.html">market feed</a>
+      <a href="market-leaderboard.html">market leaderboard</a>
+    </div>
+  </div>
+
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Market Lobby</h1>
+    <p class="small">
+      explore market runs, signals, and performance rankings
+    </p>
+    <p id="marketTierStatus" class="small"></p>
+  </header>
+
+  <section class="market-grid">
+    <div class="market-card" data-target="market-arena.html">
+      <h3>Market Arena</h3>
+      <p>enter market-style runs with locked rules and fair payouts</p>
+    </div>
+
+    <div class="market-card" data-target="market-feed.html">
+      <h3>Market Feed</h3>
+      <p>signals, momentum shifts, and market context</p>
+    </div>
+
+    <div class="market-card" data-target="market-leaderboard.html">
+      <h3>Market Leaderboard</h3>
+      <p>rankings by roi and consistency</p>
+    </div>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/market-lobby.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

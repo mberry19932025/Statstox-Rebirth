@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Players | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- GLOBAL NAV -->
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="all-players.html" class="active">all players</a>
+  <a href="community.html">community</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+
+  <!-- PROFILE ICON -->
+  <button id="profileToggle" class="profile-toggle" aria-label="profile">
+    <img src="images/icon-profile.png" alt="profile" />
+  </button>
+</nav>
+
+<!-- PROFILE MENU (HIDDEN BY DEFAULT) -->
+<div id="profileMenu" class="profile-menu hidden">
+  <a href="profile.html">profile</a>
+  <a href="portfolio.html">portfolio</a>
+  <a href="settings.html">settings</a>
+  <a href="logout.html">log out</a>
+</div>
+
+<main>
+  <header class="page-header">
+    <img src="images/statstox-logo-placeholder.png" alt="statstox logo" />
+    <h1>All Players</h1>
+    <p>signal-driven player projections across supported leagues</p>
+  </header>
+
+  <section class="filters">
+    <input id="allPlayersSearch" type="text" placeholder="search players" />
+
+    <select id="allPlayersLeague">
+      <option value="ALL">all leagues</option>
+      <option value="NFL">nfl</option>
+      <option value="NBA">nba</option>
+      <option value="MLB">mlb</option>
+      <option value="NHL">nhl</option>
+      <option value="WNBA">wnba</option>
+      <option value="NCAAF">ncaaf</option>
+      <option value="NCAAB">ncaab</option>
+      <option value="MLS">mls</option>
+      <option value="TENNIS">tennis</option>
+      <option value="GOLF">golf</option>
+      <option value="WRESTLING">wrestling / wwe</option>
+      <option value="MMA">mma / ufc</option>
+      <option value="BOXING">boxing</option>
+    </select>
+
+    <select id="allPlayersSignal">
+      <option value="ALL">all signals</option>
+      <option value="bullish">bullish</option>
+      <option value="neutral">neutral</option>
+      <option value="bearish">bearish</option>
+    </select>
+
+    <select id="allPlayersSort">
+      <option value="proj-desc">projection high</option>
+      <option value="proj-asc">projection low</option>
+    </select>
+  </section>
+
+  <p id="allPlayersStatus" class="status"></p>
+  <section id="allPlayersGrid" class="players-grid"></section>
+</main>
+
+<!-- FOOTER -->
+<footer class="global-footer">
+  <div class="footer-icons">
+    <img src="images/icon-stats.png" alt="stats & signals" />
+    <img src="images/icon-contests.png" alt="contests" />
+    <img src="images/icon-community.png" alt="community" />
+    <img src="images/icon-compliance.png" alt="dfs compliant" />
+  </div>
+
+  <div class="footer-social">
+    <button id="socialToggle" aria-label="social links">
+      <img src="images/icon-social.png" alt="social icon" />
+    </button>
+
+    <div id="socialMenu" class="social-menu hidden">
+      <a href="#"><img src="images/icon-x.png" alt="x twitter" /></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="instagram" /></a>
+      <a href="#"><img src="images/icon-youtube.png" alt="youtube" /></a>
+    </div>
+  </div>
+
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<!-- GLOBAL CORE -->
+<script src="js/ui.js"></script>
+<script src="js/utils/formatutils.js"></script>
+
+<!-- GLOBAL SYSTEMS -->
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- PAGE SCRIPT -->
+<script src="js/all-players.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

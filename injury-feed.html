@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Injury Feed | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="feed.html">feed</a>
+  <a href="all-players.html">all players</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="injury-feed.html" class="active">injuries</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+
+  <button id="profileToggle" aria-label="profile">
+    <img src="images/icon-profile.png" alt="profile" />
+  </button>
+</nav>
+
+<main>
+  <header class="page-header">
+    <img
+      src="images/statstox-logo-placeholder.png"
+      alt="statstox logo"
+      class="page-logo"
+    />
+    <h1>Injury Feed</h1>
+    <p class="small">
+      real-time injury updates impacting DFS entries and projections
+    </p>
+  </header>
+
+  <!-- FILTER -->
+  <section class="injury-filters">
+    <select id="injuryFeedFilter">
+      <option value="all">all</option>
+      <option value="questionable">questionable</option>
+      <option value="doubtful">doubtful</option>
+      <option value="out">out</option>
+      <option value="game-time decision">game-time decision</option>
+    </select>
+  </section>
+
+  <!-- FEED -->
+  <section class="injury-wrap">
+    <p id="injuryFeedStatus" class="small"></p>
+    <ul id="injuryFeedList" class="injury-list"></ul>
+  </section>
+
+  <!-- FEED HOOK -->
+  <div id="feedHook" data-enabled="true"></div>
+</main>
+
+<footer class="global-footer">
+  <div class="footer-icons">
+    <img src="images/icon-stats.png" alt="stats & signals" />
+    <img src="images/icon-contests.png" alt="contests" />
+    <img src="images/icon-community.png" alt="community" />
+    <img src="images/icon-compliance.png" alt="dfs compliant" />
+  </div>
+
+  <div class="footer-social">
+    <button id="socialToggle" aria-label="social links">
+      <img src="images/icon-social.png" alt="social icon" />
+    </button>
+    <div id="socialMenu" class="social-menu hidden">
+      <a href="#"><img src="images/icon-x.png" alt="x twitter" /></a>
+      <a href="#"><img src="images/icon-instagram.png" alt="instagram" /></a>
+      <a href="#"><img src="images/icon-youtube.png" alt="youtube" /></a>
+    </div>
+  </div>
+
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<!-- GLOBAL CORE -->
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+
+<!-- GLOBAL SYSTEMS -->
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- PAGE SCRIPT -->
+<script src="js/injury-feed.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

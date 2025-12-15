@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live Run | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="feed.html">feed</a>
+  <a href="contest-lobby.html">contests</a>
+  <a href="liverun.html" class="active">live run</a>
+  <a href="notifications.html">notifications</a>
+  <a href="performance-heatup.html">performance</a>
+  <button id="profileToggle"><img src="images/icon-profile.png" alt="profile" /></button>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Live Run</h1>
+    <p class="small">real-time DFS runs with locked projections and fair entry pricing</p>
+  </header>
+
+  <section class="filters">
+    <select id="liveRunSport">
+      <option value="all">all sports</option>
+      <option value="NFL">NFL</option>
+      <option value="NBA">NBA</option>
+      <option value="MLB">MLB</option>
+      <option value="multi">multi</option>
+    </select>
+
+    <select id="liveRunEntry">
+      <option value="all">all entries</option>
+      <option value="2">$2</option>
+      <option value="5">$5</option>
+      <option value="10">$10</option>
+      <option value="25">$25</option>
+      <option value="100">$100</option>
+    </select>
+  </section>
+
+  <section>
+    <p id="liveRunStatus" class="small"></p>
+    <ul id="liveRunList"></ul>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/utils/tierutils.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/liverun.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>

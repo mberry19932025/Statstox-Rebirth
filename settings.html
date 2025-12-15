@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings | StatStox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav class="global-nav">
+  <a href="index.html">home</a>
+  <a href="profile.html">profile</a>
+  <a href="settings.html" class="active">settings</a>
+  <a href="notifications.html">notifications</a>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Settings</h1>
+    <p class="small">preferences and account controls</p>
+  </header>
+
+  <section class="settings-list">
+    <label><input type="checkbox" data-setting="alerts" /> enable alerts</label>
+    <label><input type="checkbox" data-setting="darkmode" /> dark mode</label>
+    <label><input type="checkbox" data-setting="sound" /> sound effects</label>
+  </section>
+</main>
+
+<footer class="global-footer">
+  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+</footer>
+
+<script src="js/ui.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/performanceheatup.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/footer.js"></script>
+</body>
+</html>
