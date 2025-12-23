@@ -1,19 +1,31 @@
-/*
-  FORMAT UTILS (STATSTOX)
-  ----------------------
-  Global helpers. No DOM.
-*/
+// format.utils.js — formatting helpers
 
-window.FormatUtils = {
-  formatCoins(amount) {
-    return `${Number(amount).toLocaleString()} Stox Coins`;
+window.formatutils = {
+  normalize(value) {
+    return String(value ?? '').toLowerCase().trim();
   },
 
-  formatPrice(value) {
-    return `$${Number(value).toFixed(2)}`;
+  currency(value) {
+    if (isNaN(value)) return '$0';
+    return `$${Number(value).toLocaleString()}`;
   },
 
-  formatSignal(value) {
-    return `${Math.round(value)}% Signal`;
+  money(value) {
+    return window.formatutils.currency(value);
+  },
+
+  percent(value) {
+    if (isNaN(value)) return '0%';
+    return `${value}%`;
+  },
+
+  signed(value) {
+    if (isNaN(value)) return '0';
+    return value > 0 ? `+${value}` : `${value}`;
+  },
+
+  number1(value) {
+    if (isNaN(value)) return '0.0';
+    return Number(value).toFixed(1);
   }
 };

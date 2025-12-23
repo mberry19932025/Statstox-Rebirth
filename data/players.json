@@ -1,0 +1,47 @@
+[
+  {
+    "id": "p001",
+    "name": "Player Alpha",
+    "league": "NBA",
+    "team": "LAL",
+    "position": "PG",
+    "status": "active",
+    "image": "player-silhouette.png"
+  },
+  {
+    "id": "p002",
+    "name": "Player Beta",
+    "league": "NFL",
+    "team": "KC",
+    "position": "QB",
+    "status": "active",
+    "image": "player-silhouette.png"
+  },
+  {
+    "id": "p003",
+    "name": "Player Gamma",
+    "league": "MLB",
+    "team": "NYY",
+    "position": "SP",
+    "status": "active",
+    "image": "player-silhouette.png"
+  },
+  {
+    "id": "p004",
+    "name": "Player Delta",
+    "league": "NHL",
+    "team": "TOR",
+    "position": "C",
+    "status": "active",
+    "image": "player-silhouette.png"
+  },
+  {
+    "id": "p005",
+    "name": "Player Echo",
+    "league": "WNBA",
+    "team": "LV",
+    "position": "G",
+    "status": "active",
+    "image": "player-silhouette.png"
+  }
+]

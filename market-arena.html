@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Market Arena | StatStox</title>
+  <link rel="stylesheet" href="./css/styles.css"/>
+</head>
+
+<body class="page-shell">
+
+  <!-- ================= GLOBAL NAV ================= -->
+  <header class="global-nav">
+    <div class="nav-inner">
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Players ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="all-players.html">All Players</a>
+            <a href="player-board.html">Player Board</a>
+            <a href="player-list.html">Player List</a>
+            <a href="leaderboard.html">Leaderboard</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Market ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="market.html">Market Overview</a>
+            <a href="market-arena.html">Market Arena</a>
+            <!-- <a href="market-lobby.html">Market Lobby</a> -->
+            <a href="market-feed.html">Market Feed</a>
+            <a href="market-leaderboard.html">Market Leaderboard</a>
+            <a href="market-simulation.html">Simulation</a>
+            <a href="momentum-run.html">Momentum Run</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Draft ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="draft.html">Draft Overview</a>
+            <a href="draft-arena.html">Draft Arena</a>
+            <a href="draft-lobby.html">Draft Lobby</a>
+            <a href="dfs-feed.html">DFS Feed</a>
+            <a href="flexpix.html">FlexPix</a>
+            <a href="roster-run.html">Roster Run</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Performance ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="performance.html">Performance Overview</a>
+            <a href="heat-up.html">Heat-Up</a>
+            <a href="signal-run.html">Signal Run</a>
+            <a href="projection-pool.html">Projection Pool</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Contest ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="contest-lobby.html">Contest Lobby</a>
+            <a href="contest-arena.html">Contest Arena</a>
+            <a href="live-run.html">Live Run</a>
+            <a href="tournaments.html">Tournaments</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Community ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="community.html">Community Hub</a>
+            <a href="community-feed.html">Community Feed</a>
+            <a href="sports-feed.html">Sports Feed</a>
+            <a href="locker-room.html">Locker Room</a>
+            <a href="badges.html">Badges</a>
+          </div>
+        </div>
+
+        <a href="notifications.html">Notifications</a>
+        <a href="promo.html">Promo</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Shop ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="shop.html">Avatar Shop</a>
+            <a href="subscriptions.html">Subscriptions</a>
+            <a href="vip.html">VIP</a>
+          </div>
+        </div>
+
+        <a href="rules.html">Rules</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Account ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="account.html">Profile</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="transactions.html">Transactions</a>
+            <a href="settings.html">Settings</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- ================= END NAV ================= -->
+
+<main class="page-content">
+
+  <header class="page-header">
+    <h1 class="glow-text">Market Arena</h1>
+    <p>Trade player shares in real time</p>
+  </header>
+
+  <section class="arena-surface">
+    <div class="arena-topbar">
+      <span class="arena-pill">Live Market</span>
+      <span class="arena-pill">Open Now</span>
+    </div>
+
+    <div class="market-layout">
+      <div class="market-board">
+        <div class="market-row header">
+          <span>Player</span>
+          <span>Price</span>
+          <span>Move</span>
+          <span>Signal</span>
+        </div>
+        <div class="market-row">
+          <strong>J. Allen</strong>
+          <span>$18.40</span>
+          <span class="price-up">+3.2%</span>
+          <span class="stat-chip up">Bullish</span>
+        </div>
+        <div class="market-row">
+          <strong>A. Wilson</strong>
+          <span>$12.10</span>
+          <span class="price-down">-1.1%</span>
+          <span class="stat-chip down">Bearish</span>
+        </div>
+        <div class="market-row">
+          <strong>L. Doncic</strong>
+          <span>$25.90</span>
+          <span class="price-up">+0.8%</span>
+          <span class="stat-chip">Neutral</span>
+        </div>
+      </div>
+
+      <div class="trade-panel">
+        <h2>Trade Ticket</h2>
+        <label for="marketPlayer">Player</label>
+        <select id="marketPlayer" name="marketPlayer">
+          <option>Josh Allen</option>
+          <option>A'ja Wilson</option>
+          <option>Luka Doncic</option>
+        </select>
+
+        <label for="marketShares">Shares</label>
+        <input id="marketShares" name="marketShares" type="number" min="1" placeholder="10" />
+
+        <div class="trade-actions">
+          <button class="btn-primary" type="button">Buy</button>
+          <button class="btn-secondary" type="button">Sell</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="arena-grid">
+    <article class="arena-card">
+      <h2>Momentum Run</h2>
+      <p>High-volatility market mode for advanced traders</p>
+
+      <ul class="arena-meta">
+        <li>🔥 Rapid price swings</li>
+        <li>🚀 Advanced strategies</li>
+      </ul>
+
+      <a href="momentum-run.html" class="btn-warning">Enter Momentum</a>
+    </article>
+
+    <article class="arena-card">
+      <h2>Simulation</h2>
+      <p>Practice market strategies risk-free</p>
+
+      <ul class="arena-meta">
+        <li>🧠 Learn the system</li>
+        <li>🎓 No entry fee</li>
+      </ul>
+
+      <a href="market-simulation.html" class="btn-secondary">Start Simulation</a>
+    </article>
+
+    <article class="arena-card">
+      <h2>Market Feed</h2>
+      <p>Signals, volatility alerts, and movement intel</p>
+
+      <ul class="arena-meta">
+        <li>📊 Momentum shifts</li>
+        <li>⚡ Price alerts</li>
+      </ul>
+
+      <a href="market-feed.html" class="btn-secondary">View Feed</a>
+    </article>
+  </section>
+
+</main>
+<!-- GLOBAL CORE (ON EVERY PAGE) -->
+<!-- SHARED UTILS -->
+
+<!-- UX + VISUAL FEEDBACK -->
+
+<!-- PAGE-SPECIFIC LOGIC -->
+
+
+
+
+<!-- SCRIPTS LAST -->
+<script src="./js/main.js" defer></script>
+<script src="./js/nav.js" defer></script>
+<script src="./js/utils/format.utils.js" defer></script>
+<script src="./js/utils/tier.utils.js" defer></script>
+<script src="./js/market-arena.js" defer></script>
+<footer class="global-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="./images/logo.png" alt="StatStox Logo" class="footer-logo-img" />
+      <div class="footer-brand-text">
+        <span class="footer-name">StatStox</span>
+        <span class="footer-tagline">We are changing the game while changing the game</span>
+      </div>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <a href="market.html">Market</a>
+      <a href="all-players.html">Players</a>
+      <a href="draft.html">Draft</a>
+      <a href="contest-lobby.html">Contests</a>
+      <a href="live-run.html">Live Run</a>
+      <a href="community.html">Community</a>
+    </nav>
+
+    <div class="footer-social">
+      <button class="social-trigger" aria-label="Social Links">
+        SOC
+      </button>
+      <div class="social-menu">
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Discord">DC</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    © StatStox. All rights reserved.
+  </div>
+</footer>
+
+</body>

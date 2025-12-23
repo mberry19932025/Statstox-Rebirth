@@ -1,5 +1,3 @@
-window.performanceHeatUp = {
-  update(data) {
-    console.log("[performance]", data);
-  }
-};
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Performance Heat-Up loaded');
+});

@@ -4,101 +4,191 @@
   <meta charset="UTF-8" />
   <title>DFS Feed | StatStox</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
-<body>
 
-<nav class="global-nav">
-  <a href="index.html">home</a>
-  <a href="all-players.html">all players</a>
-  <a href="contest-lobby.html">contests</a>
-  <a href="dfs-feed.html" class="active">dfs feed</a>
-  <a href="deposit-withdrawal.html">wallet</a>
-  <a href="notifications.html">notifications</a>
-  <a href="performance-heatup.html">performance</a>
+<body class="page-shell">
 
-  <button id="profileToggle" aria-label="profile">
-    <img src="images/icon-profile.png" alt="profile" />
-  </button>
-</nav>
+  <!-- ================= GLOBAL NAV ================= -->
+  <header class="global-nav">
+    <div class="nav-inner">
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
 
-<main>
-  <header class="page-header">
-    <img src="images/statstox-logo-placeholder.png" alt="statstox logo" class="page-logo" />
-    <h1>DFS Feed</h1>
-    <p class="small">live signals, projections, and momentum insights</p>
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Players ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="all-players.html">All Players</a>
+            <a href="player-board.html">Player Board</a>
+            <a href="player-list.html">Player List</a>
+            <a href="leaderboard.html">Leaderboard</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Market ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="market.html">Market Overview</a>
+            <a href="market-arena.html">Market Arena</a>
+            <!-- <a href="market-lobby.html">Market Lobby</a> -->
+            <a href="market-feed.html">Market Feed</a>
+            <a href="market-leaderboard.html">Market Leaderboard</a>
+            <a href="market-simulation.html">Simulation</a>
+            <a href="momentum-run.html">Momentum Run</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Draft ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="draft.html">Draft Overview</a>
+            <a href="draft-arena.html">Draft Arena</a>
+            <a href="draft-lobby.html">Draft Lobby</a>
+            <a href="dfs-feed.html">DFS Feed</a>
+            <a href="flexpix.html">FlexPix</a>
+            <a href="roster-run.html">Roster Run</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Performance ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="performance.html">Performance Overview</a>
+            <a href="heat-up.html">Heat-Up</a>
+            <a href="signal-run.html">Signal Run</a>
+            <a href="projection-pool.html">Projection Pool</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Contest ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="contest-lobby.html">Contest Lobby</a>
+            <a href="contest-arena.html">Contest Arena</a>
+            <a href="live-run.html">Live Run</a>
+            <a href="tournaments.html">Tournaments</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Community ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="community.html">Community Hub</a>
+            <a href="community-feed.html">Community Feed</a>
+            <a href="sports-feed.html">Sports Feed</a>
+            <a href="locker-room.html">Locker Room</a>
+            <a href="badges.html">Badges</a>
+          </div>
+        </div>
+
+        <a href="notifications.html">Notifications</a>
+        <a href="promo.html">Promo</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Shop ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="shop.html">Avatar Shop</a>
+            <a href="subscriptions.html">Subscriptions</a>
+            <a href="vip.html">VIP</a>
+          </div>
+        </div>
+
+        <a href="rules.html">Rules</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Account ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="account.html">Profile</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="transactions.html">Transactions</a>
+            <a href="settings.html">Settings</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+          </div>
+        </div>
+      </nav>
+    </div>
   </header>
+  <!-- ================= END NAV ================= -->
 
-  <!-- FILTERS -->
-  <section class="dfs-filters">
-    <input
-      type="text"
-      id="dfsSearch"
-      placeholder="search players or signals"
-    />
+<main class="page-content">
+    <section class="page-header">
+      <h1>StatStox DFS Feed</h1>
+      <p>Signals, slate intel, and community activity.</p>
+      <div class="arena-meta">
+        <span class="stat-chip">Real-Time</span>
+        <span class="stat-chip">Refresh: 60s</span>
+      </div>
+    </section>
 
-    <select id="dfsFilterSport">
-      <option value="all">all sports</option>
-      <option value="NFL">NFL</option>
-      <option value="NBA">NBA</option>
-      <option value="MLB">MLB</option>
-      <option value="NHL">NHL</option>
-      <option value="WWE">WWE</option>
-      <option value="MLS">MLS</option>
-      <option value="Tennis">Tennis</option>
-      <option value="Golf">Golf</option>
-      <option value="Boxing">Boxing</option>
-    </select>
+    <section class="feed-grid">
+      <article class="feed-card">
+        <strong>Market Alert</strong>
+        <p>Josh Allen projection surged +18%</p>
+        <div class="feed-actions">
+          <button class="feed-action" type="button" data-action="like" data-count="0">Like</button>
+          <button class="feed-action" type="button" data-action="comment" data-count="0">Comment</button>
+          <button class="feed-action" type="button" data-action="share" data-count="0">Share</button>
+        </div>
+      </article>
 
-    <select id="dfsFilterTier">
-      <option value="all">all tiers</option>
-      <option value="free">free</option>
-      <option value="pro">pro</option>
-      <option value="elite">elite</option>
-    </select>
-  </section>
+      <article class="feed-card">
+        <strong>Draft Update</strong>
+        <p>High Roller Draft filling fast</p>
+        <div class="feed-actions">
+          <button class="feed-action" type="button" data-action="like" data-count="0">Like</button>
+          <button class="feed-action" type="button" data-action="comment" data-count="0">Comment</button>
+          <button class="feed-action" type="button" data-action="share" data-count="0">Share</button>
+        </div>
+      </article>
+    </section>
+  </main>
 
-  <!-- FEED -->
-  <section class="dfs-feed">
-    <p id="dfsFeedStatus" class="small"></p>
-    <ul id="dfsFeedList" class="dfs-feed-list"></ul>
-  </section>
-</main>
 
+
+
+<!-- SCRIPTS LAST -->
+<script src="./js/main.js" defer></script>
+<script src="./js/nav.js" defer></script>
+<script src="./js/utils/format.utils.js" defer></script>
+<script src="./js/utils/tier.utils.js" defer></script>
+<script src="./js/dfs-feed.js" defer></script>
 <footer class="global-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="./images/logo.png" alt="StatStox Logo" class="footer-logo-img" />
+      <div class="footer-brand-text">
+        <span class="footer-name">StatStox</span>
+        <span class="footer-tagline">We are changing the game while changing the game</span>
+      </div>
+    </div>
 
-  <div class="footer-icons">
-    <img src="images/icon-stats.png" alt="stats & signals" />
-    <img src="images/icon-contests.png" alt="contests" />
-    <img src="images/icon-community.png" alt="community" />
-    <img src="images/icon-compliance.png" alt="dfs compliant" />
-  </div>
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <a href="market.html">Market</a>
+      <a href="all-players.html">Players</a>
+      <a href="draft.html">Draft</a>
+      <a href="contest-lobby.html">Contests</a>
+      <a href="live-run.html">Live Run</a>
+      <a href="community.html">Community</a>
+    </nav>
 
-  <div class="footer-social">
-    <button id="socialToggle" aria-label="social links">
-      <img src="images/icon-social.png" alt="social icon" />
-    </button>
-
-    <div id="socialMenu" class="social-menu hidden">
-      <a href="#"><img src="images/icon-x.png" alt="x twitter" /></a>
-      <a href="#"><img src="images/icon-instagram.png" alt="instagram" /></a>
-      <a href="#"><img src="images/icon-youtube.png" alt="youtube" /></a>
+    <div class="footer-social">
+      <button class="social-trigger" aria-label="Social Links">
+        SOC
+      </button>
+      <div class="social-menu">
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Discord">DC</a>
+      </div>
     </div>
   </div>
 
-  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+  <div class="footer-copy">
+    © StatStox. All rights reserved.
+  </div>
 </footer>
 
-<!-- GLOBAL CORE -->
-<script src="js/ui.js"></script>
-<script src="js/utils/tierutils.js"></script>
-
-<!-- GLOBAL SYSTEMS -->
-<script src="js/performanceheatup.js"></script>
-<script src="js/notifications.js"></script>
-
-<!-- PAGE SCRIPT -->
-<script src="js/dfs-feed.js"></script>
-<script src="js/footer.js"></script>
 </body>
 </html>

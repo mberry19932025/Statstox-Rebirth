@@ -1,17 +1,38 @@
 [
   {
-    "type": "news",
-    "title": "Berry expected to exceed projection",
-    "projection": "22.5 fantasy points"
+    "id": "f001",
+    "type": "signal",
+    "title": "Bullish Momentum",
+    "message": "Player Alpha projection trending upward across last 5 games.",
+    "league": "NBA",
+    "icon": "signal",
+    "timestamp": "2025-01-15T18:30:00Z"
   },
   {
+    "id": "f002",
     "type": "injury",
-    "title": "Daniels listed questionable",
-    "details": "Ankle soreness reported during practice."
+    "title": "Injury Update",
+    "message": "Player Beta listed as questionable for upcoming matchup.",
+    "league": "NFL",
+    "icon": "injury",
+    "timestamp": "2025-01-15T19:10:00Z"
   },
   {
-    "type": "trend",
-    "title": "Alvarez becoming a top value pick",
-    "details": "High floor + increasing opportunity share."
+    "id": "f003",
+    "type": "market",
+    "title": "Market Alert",
+    "message": "Heavy buying pressure detected on Player Gamma.",
+    "league": "MLB",
+    "icon": "market",
+    "timestamp": "2025-01-15T20:05:00Z"
+  },
+  {
+    "id": "f004",
+    "type": "system",
+    "title": "Contest Lock",
+    "message": "NBA FlexPix entries lock in 10 minutes.",
+    "league": "NBA",
+    "icon": "lock",
+    "timestamp": "2025-01-15T20:20:00Z"
   }
 ]

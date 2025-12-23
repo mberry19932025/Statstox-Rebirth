@@ -1,29 +1,12 @@
-/*
-  UI HELPERS (STATSTOX)
-  --------------------
-  Shared UI behavior only.
-*/
+document.addEventListener('DOMContentLoaded', () => {
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-document.addEventListener("DOMContentLoaded", () => {
-  // NAV DROPDOWNS
-  document.querySelectorAll(".nav-dropbtn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      btn.parentElement.classList.toggle("open");
-    });
-  });
+  // Fix footer icon paths globally
+  document.querySelectorAll('footer img').forEach(img => {
+    if (!img.src.includes('/images/')) return;
 
-  // SOCIAL MENU
-  const socialToggle = document.getElementById("socialToggle");
-  const socialMenu = document.getElementById("socialMenu");
-
-  if (socialToggle && socialMenu) {
-    socialToggle.addEventListener("click", () => {
-      socialMenu.classList.toggle("open");
-    });
-  }
-
-  // DISABLED BUTTON FEEDBACK
-  document.querySelectorAll("button:disabled").forEach(btn => {
-    btn.addEventListener("click", e => e.preventDefault());
+    const file = img.src.split('/images/').pop();
+    img.src = `./images/${file}`;
   });
 });

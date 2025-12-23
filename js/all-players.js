@@ -1,68 +1,97 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const PAGE_ID = "all-players";
+/* globals formatutils, notifications, performanceHeatUp */
+const PAGE_ID = 'all-players';
 
-  const grid = document.getElementById("allPlayersGrid");
-  const searchInput = document.getElementById("allPlayersSearch");
-  const leagueSelect = document.getElementById("allPlayersLeague");
-  const signalSelect = document.getElementById("allPlayersSignal");
-  const sortSelect = document.getElementById("allPlayersSort");
-  const statusText = document.getElementById("allPlayersStatus");
+document.addEventListener('DOMContentLoaded', () => {
+  // --- elements ---
+  const grid = document.getElementById('allPlayersGrid');
+  const searchInput = document.getElementById('allPlayersSearch');
+  const leagueSelect = document.getElementById('allPlayersLeague');
+  const signalSelect = document.getElementById('allPlayersSignal');
+  const sortSelect = document.getElementById('allPlayersSort');
+  const statusText = document.getElementById('allPlayersStatus');
 
+  // --- safety ---
   if (!grid || !searchInput || !leagueSelect || !signalSelect || !sortSelect || !statusText) {
-    console.error(`[${PAGE_ID}] missing required DOM elements`);
+    console.warn('[all-players] Missing required DOM nodes. Check IDs in all-players.html');
     return;
   }
 
+  // --- helpers ---
   const normalize = (val) =>
-    window.formatUtils?.normalize
-      ? window.formatUtils.normalize(val)
-      : String(val || "").toLowerCase().trim();
+    window.formatutils?.normalize
+      ? window.formatutils.normalize(val)
+      : String(val ?? '').toLowerCase().trim();
 
-  window.notifications?.add("all players page loaded");
+  const money = (n) =>
+    window.formatutils?.money
+      ? window.formatutils.money(n)
+      : `$${Number(n || 0).toLocaleString()}`;
 
-  window.performanceHeatUp?.update({
-    page: PAGE_ID,
-    action: "view"
-  });
+  const number1 = (n) =>
+    window.formatutils?.number1
+      ? window.formatutils.number1(n)
+      : Number(n || 0).toFixed(1);
 
+  // --- mock SPORTS player data (NOT avatars) ---
+  // Backend later will replace this with real player feed.
   const players = [
-    { id: "p1", name: "Player Alpha", league: "NBA", signal: "bullish", projection: 12.5 },
-    { id: "p2", name: "Player Beta", league: "NFL", signal: "neutral", projection: 4.0 },
-    { id: "p3", name: "Player Gamma", league: "MLB", signal: "bearish", projection: -3.2 },
-    { id: "p4", name: "Player Delta", league: "NHL", signal: "bullish", projection: 6.7 },
-    { id: "p5", name: "Player Echo", league: "WNBA", signal: "bullish", projection: 9.1 },
-    { id: "p6", name: "Campus Star", league: "NCAAB", signal: "neutral", projection: 5.5 },
-    { id: "p7", name: "Saturday Legend", league: "NCAAF", signal: "bullish", projection: 10.2 },
-    { id: "p8", name: "Main Event Alpha", league: "WRESTLING", signal: "bullish", projection: 7.5 },
-    { id: "p9", name: "Pitch Commander", league: "MLS", signal: "neutral", projection: 5.2 },
-    { id: "p10", name: "Baseline King", league: "TENNIS", signal: "bullish", projection: 8.4 },
-    { id: "p11", name: "Fairway Ace", league: "GOLF", signal: "neutral", projection: 6.3 },
-    { id: "p12", name: "Octagon Alpha", league: "MMA", signal: "bullish", projection: 8.9 },
-    { id: "p13", name: "Ring Commander", league: "BOXING", signal: "bearish", projection: -2.1 }
+    { id: 'nfl-josh-allen', name: 'Josh Allen', league: 'NFL', position: 'QB', team: 'BUF', signal: 'bullish', projection: 24.6, salary: 9200 },
+    { id: 'nfl-tyreek-hill', name: 'Tyreek Hill', league: 'NFL', position: 'WR', team: 'MIA', signal: 'neutral', projection: 21.3, salary: 8800 },
+    { id: 'nba-luka-doncic', name: 'Luka Dončić', league: 'NBA', position: 'PG', team: 'DAL', signal: 'bullish', projection: 52.1, salary: 11400 },
+    { id: 'nba-joel-embiid', name: 'Joel Embiid', league: 'NBA', position: 'C', team: 'PHI', signal: 'bearish', projection: 47.8, salary: 10900 },
+    { id: 'mlb-mookie-betts', name: 'Mookie Betts', league: 'MLB', position: 'OF', team: 'LAD', signal: 'bullish', projection: 10.4, salary: 5600 },
+    { id: 'nhl-connor-mcdavid', name: 'Connor McDavid', league: 'NHL', position: 'C', team: 'EDM', signal: 'neutral', projection: 17.2, salary: 8700 },
+    { id: 'wnba-aja-wilson', name: "A'ja Wilson", league: 'WNBA', position: 'F', team: 'LVA', signal: 'bullish', projection: 44.9, salary: 10300 },
+    { id: 'mma-main-event', name: 'Main Event Fighter', league: 'MMA', position: 'FTR', team: '—', signal: 'bullish', projection: 8.9, salary: 7900 }
   ];
 
+  // --- telemetry ---
+  window.notifications?.add?.('All Players loaded');
+  window.performanceHeatUp?.update?.({ page: PAGE_ID, action: 'view' });
+
   function renderPlayers(list) {
-    grid.innerHTML = "";
+    grid.innerHTML = '';
 
     if (!list.length) {
-      statusText.textContent = "no players match your filters";
+      statusText.textContent = 'No players match your filters.';
       return;
     }
 
-    statusText.textContent = `${list.length} players shown`;
+    statusText.textContent = `Showing ${list.length} players`;
 
-    list.forEach((player) => {
-      const card = document.createElement("article");
-      card.className = "player-card";
-      card.dataset.playerId = player.id;
+    list.forEach((p) => {
+      const card = document.createElement('a');
+      card.className = 'player-card-link';
+      card.href = `player-board.html?playerId=${encodeURIComponent(p.id)}`;
+      card.setAttribute('aria-label', `Open ${p.name} player board`);
 
       card.innerHTML = `
-        <img src="images/player-silhouette.png" alt="player silhouette" />
-        <h3>${player.name}</h3>
-        <p><strong>league:</strong> ${player.league}</p>
-        <p><strong>signal:</strong> ${player.signal}</p>
-        <p><strong>projection:</strong> ${player.projection > 0 ? "+" : ""}${player.projection}</p>
-        <a href="player-board.html" class="secondary-btn">view player</a>
+        <article class="player-card" data-player-id="${p.id}">
+          <div class="player-card-left">
+            <img class="player-avatar-img" src="./images/player-silhouette.png" alt="Player silhouette" />
+          </div>
+
+          <div class="player-card-mid">
+            <h3 class="player-name">${p.name}</h3>
+            <p class="player-sub">
+              <span class="pill">${p.position}</span>
+              <span class="dot">•</span>
+              <span class="pill">${p.team}</span>
+              <span class="dot">•</span>
+              <span class="pill">${p.league}</span>
+            </p>
+
+            <p class="player-metrics">
+              <span class="metric"><strong>Proj</strong> ${number1(p.projection)}</span>
+              <span class="metric"><strong>Salary</strong> ${money(p.salary)}</span>
+            </p>
+          </div>
+
+          <div class="player-card-right">
+            <span class="signal-badge signal-${p.signal}">${p.signal}</span>
+            <span class="cta-mini">Open</span>
+          </div>
+        </article>
       `;
 
       grid.appendChild(card);
@@ -71,37 +100,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyFilters() {
     const query = normalize(searchInput.value);
-    const leagueValue = leagueSelect.value;
-    const signalValue = signalSelect.value;
-    const sortValue = sortSelect.value;
+    const league = leagueSelect.value;
+    const signal = signalSelect.value;
+    const sort = sortSelect.value;
 
     let filtered = players.filter((p) => {
-      return (
-        normalize(p.name).includes(query) &&
-        (leagueValue === "ALL" || p.league === leagueValue) &&
-        (signalValue === "ALL" || p.signal === signalValue)
-      );
+      const nameOk = normalize(p.name).includes(query);
+      const leagueOk = league === 'ALL' || p.league === league;
+      const signalOk = signal === 'ALL' || p.signal === signal;
+      return nameOk && leagueOk && signalOk;
     });
 
-    if (sortValue === "proj-desc") filtered.sort((a, b) => b.projection - a.projection);
-    if (sortValue === "proj-asc") filtered.sort((a, b) => a.projection - b.projection);
-
-    window.notifications?.add("all players filters updated");
-
-    window.performanceHeatUp?.update({
-      page: PAGE_ID,
-      action: "filter",
-      league: leagueValue,
-      signal: signalValue
+    filtered.sort((a, b) => {
+      if (sort === 'proj-asc') return a.projection - b.projection;
+      return b.projection - a.projection; // default desc
     });
 
     renderPlayers(filtered);
   }
 
-  searchInput.addEventListener("input", applyFilters);
-  leagueSelect.addEventListener("change", applyFilters);
-  signalSelect.addEventListener("change", applyFilters);
-  sortSelect.addEventListener("change", applyFilters);
+  // --- events ---
+  searchInput.addEventListener('input', applyFilters);
+  leagueSelect.addEventListener('change', applyFilters);
+  signalSelect.addEventListener('change', applyFilters);
+  sortSelect.addEventListener('change', applyFilters);
 
-  renderPlayers(players);
+  // first render
+  applyFilters();
 });

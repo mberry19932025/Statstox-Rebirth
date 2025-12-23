@@ -1,37 +1,21 @@
-/**
- * tabs.js
- * Generic tab switching logic
- * Include ONLY on pages that use tabs
- */
+// tabs.js — reusable tab logic
 
-document.addEventListener("DOMContentLoaded", () => {
-  const tabButtons = document.querySelectorAll("[data-tab]");
-  const tabPanels = document.querySelectorAll("[data-tab-panel]");
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-tab-group]').forEach(group => {
+    const tabs = group.querySelectorAll('[data-tab]');
+    const panels = group.querySelectorAll('[data-tab-panel]');
 
-  if (!tabButtons.length || !tabPanels.length) return;
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
 
-  function activateTab(tabKey) {
-    tabPanels.forEach(panel => {
-      panel.classList.toggle(
-        "hidden",
-        panel.dataset.tabPanel !== tabKey
-      );
-    });
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.add('hidden'));
 
-    tabButtons.forEach(btn => {
-      btn.classList.toggle(
-        "active",
-        btn.dataset.tab === tabKey
-      );
-    });
-  }
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      activateTab(btn.dataset.tab);
+        tab.classList.add('active');
+        group.querySelector(`[data-tab-panel="${target}"]`)
+             ?.classList.remove('hidden');
+      });
     });
   });
-
-  // Auto-activate first tab
-  activateTab(tabButtons[0].dataset.tab);
 });

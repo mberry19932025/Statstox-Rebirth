@@ -1,71 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rules | StatStox</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="./css/styles.css"/>
 </head>
-<body>
 
-<nav class="global-nav">
-  <a href="index.html">home</a>
-  <a href="contest-lobby.html">contests</a>
-  <a href="rules.html" class="active">rules</a>
-  <a href="notifications.html">notifications</a>
-  <a href="performance-heatup.html">performance</a>
-</nav>
+<body class="page-shell">
 
-<main>
-  <header class="page-header">
-    <h1>Rules</h1>
-    <p class="small">clear rules • locked entries • fair payouts • responsible play</p>
+  <!-- ================= GLOBAL NAV ================= -->
+  <header class="global-nav">
+    <div class="nav-inner">
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Players ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="all-players.html">All Players</a>
+            <a href="player-board.html">Player Board</a>
+            <a href="player-list.html">Player List</a>
+            <a href="leaderboard.html">Leaderboard</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Market ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="market.html">Market Overview</a>
+            <a href="market-arena.html">Market Arena</a>
+            <!-- <a href="market-lobby.html">Market Lobby</a> -->
+            <a href="market-feed.html">Market Feed</a>
+            <a href="market-leaderboard.html">Market Leaderboard</a>
+            <a href="market-simulation.html">Simulation</a>
+            <a href="momentum-run.html">Momentum Run</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Draft ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="draft.html">Draft Overview</a>
+            <a href="draft-arena.html">Draft Arena</a>
+            <a href="draft-lobby.html">Draft Lobby</a>
+            <a href="dfs-feed.html">DFS Feed</a>
+            <a href="flexpix.html">FlexPix</a>
+            <a href="roster-run.html">Roster Run</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Performance ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="performance.html">Performance Overview</a>
+            <a href="heat-up.html">Heat-Up</a>
+            <a href="signal-run.html">Signal Run</a>
+            <a href="projection-pool.html">Projection Pool</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Contest ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="contest-lobby.html">Contest Lobby</a>
+            <a href="contest-arena.html">Contest Arena</a>
+            <a href="live-run.html">Live Run</a>
+            <a href="tournaments.html">Tournaments</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Community ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="community.html">Community Hub</a>
+            <a href="community-feed.html">Community Feed</a>
+            <a href="sports-feed.html">Sports Feed</a>
+            <a href="locker-room.html">Locker Room</a>
+            <a href="badges.html">Badges</a>
+          </div>
+        </div>
+
+        <a href="notifications.html">Notifications</a>
+        <a href="promo.html">Promo</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Shop ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="shop.html">Avatar Shop</a>
+            <a href="subscriptions.html">Subscriptions</a>
+            <a href="vip.html">VIP</a>
+          </div>
+        </div>
+
+        <a href="rules.html">Rules</a>
+
+        <div class="nav-group">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Account ▾</button>
+          <div class="nav-dropdown" role="menu">
+            <a href="account.html">Profile</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="transactions.html">Transactions</a>
+            <a href="settings.html">Settings</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+          </div>
+        </div>
+      </nav>
+    </div>
   </header>
+  <!-- ================= END NAV ================= -->
 
-  <section class="rules-tabs">
-    <button class="tab active" data-rules-tab="contests">contests</button>
-    <button class="tab" data-rules-tab="market">market</button>
-    <button class="tab" data-rules-tab="vip">vip</button>
-  </section>
+<main class="page-content">
 
-  <section data-rules-panel="contests">
-    <h3>Contest Rules</h3>
-    <ul>
-      <li>entries lock at the posted lock time</li>
-      <li>once entered, projections are locked for fairness</li>
-      <li>no late edits after lock</li>
-      <li>payouts are pre-defined and transparent</li>
-      <li>responsible play: limits and cooldowns apply (backend later)</li>
-    </ul>
-  </section>
+<header class="page-header">
+  <h1>Game Rules</h1>
+  <p>Understand how contests work</p>
+</header>
 
-  <section class="hidden" data-rules-panel="market">
+<section class="hub-grid">
+
+  <article class="content-card">
+    <h3>Draft Rules</h3>
+    <p>Snake & salary-based formats</p>
+  </article>
+
+  <article class="content-card">
     <h3>Market Rules</h3>
-    <ul>
-      <li>market runs are contests with locked rules</li>
-      <li>signals are informational and not guaranteed outcomes</li>
-      <li>advanced metrics may be tier-gated</li>
-    </ul>
-  </section>
+    <p>Player prices fluctuate by performance</p>
+  </article>
 
-  <section class="hidden" data-rules-panel="vip">
-    <h3>VIP Rules</h3>
-    <ul>
-      <li>vip rooms are subscription-based per room</li>
-      <li>room access is tiered and audited (backend later)</li>
-      <li>no pay-to-win: insights are informational</li>
-    </ul>
-  </section>
+  <article class="content-card">
+    <h3>Payouts</h3>
+    <p>Top percentile earns rewards</p>
+  </article>
+
+</section>
+
+
+
+
 </main>
 
+
+
+<!-- SCRIPTS LAST -->
+<script src="./js/main.js" defer></script>
+<script src="./js/nav.js" defer></script>
+<script src="./js/utils/format.utils.js" defer></script>
+<script src="./js/utils/tier.utils.js" defer></script>
+<script src="./js/rules.js" defer></script>
 <footer class="global-footer">
-  <p>© <span id="currentYear"></span> StatStox. all rights reserved.</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="./images/logo.png" alt="StatStox Logo" class="footer-logo-img" />
+      <div class="footer-brand-text">
+        <span class="footer-name">StatStox</span>
+        <span class="footer-tagline">We are changing the game while changing the game</span>
+      </div>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <a href="market.html">Market</a>
+      <a href="all-players.html">Players</a>
+      <a href="draft.html">Draft</a>
+      <a href="contest-lobby.html">Contests</a>
+      <a href="live-run.html">Live Run</a>
+      <a href="community.html">Community</a>
+    </nav>
+
+    <div class="footer-social">
+      <button class="social-trigger" aria-label="Social Links">
+        SOC
+      </button>
+      <div class="social-menu">
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Discord">DC</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    © StatStox. All rights reserved.
+  </div>
 </footer>
 
-<script src="js/ui.js"></script>
-<script src="js/notifications.js"></script>
-<script src="js/performanceheatup.js"></script>
-<script src="js/rules.js"></script>
-<script src="js/footer.js"></script>
 </body>
 </html>

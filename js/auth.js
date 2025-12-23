@@ -1,56 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const PAGE_ID = "auth";
+const PAGE_ID = 'auth';
 
-  /* ===============================
-     REQUIRED DOM ELEMENTS
-     =============================== */
-  const loginBtn = document.getElementById("authLoginBtn");
-  const signupBtn = document.getElementById("authSignupBtn");
-  const statusText = document.getElementById("authStatus");
+document.addEventListener('DOMContentLoaded', () => {
+  const modeToggle = document.getElementById('authToggle');
+  const title = document.getElementById('authTitle');
 
-  if (!loginBtn || !signupBtn || !statusText) {
-    console.error(`[${PAGE_ID}] missing required DOM elements`);
-    return;
+  let mode = 'login';
+
+  function updateMode() {
+    title.textContent = mode === 'login' ? 'Log In' : 'Create Account';
+    modeToggle.textContent =
+      mode === 'login'
+        ? 'Need an account? Sign up'
+        : 'Already have an account? Log in';
   }
 
-  /* ===============================
-     GLOBAL SYSTEM HOOKS
-     =============================== */
-  window.notifications?.add("auth page loaded");
-
-  window.performanceHeatUp?.update({
-    page: PAGE_ID,
-    action: "view"
+  modeToggle.addEventListener('click', () => {
+    mode = mode === 'login' ? 'signup' : 'login';
+    updateMode();
   });
 
-  /* ===============================
-     ACTIONS (FRONTEND PLACEHOLDERS)
-     =============================== */
-  loginBtn.addEventListener("click", () => {
-    statusText.textContent = "redirecting to login…";
-
-    window.notifications?.add("login selected");
-
-    window.performanceHeatUp?.update({
-      page: PAGE_ID,
-      action: "login-click"
-    });
-
-    // backend route later
-    window.location.href = "login.html";
-  });
-
-  signupBtn.addEventListener("click", () => {
-    statusText.textContent = "redirecting to sign up…";
-
-    window.notifications?.add("signup selected");
-
-    window.performanceHeatUp?.update({
-      page: PAGE_ID,
-      action: "signup-click"
-    });
-
-    // backend route later
-    window.location.href = "signup.html";
-  });
+  updateMode();
 });
