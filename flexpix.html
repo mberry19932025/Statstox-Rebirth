@@ -94,6 +94,8 @@
         </div>
 
         <a href="rules.html">Rules</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
 
         <div class="nav-group">
           <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Account ▾</button>
@@ -101,6 +103,7 @@
             <a href="account.html">Profile</a>
             <a href="portfolio.html">Portfolio</a>
             <a href="transactions.html">Transactions</a>
+            <a href="deposit-withdraw.html">Wallet</a>
             <a href="settings.html">Settings</a>
             <a href="login.html">Login</a>
             <a href="signup.html">Sign Up</a>
@@ -117,18 +120,117 @@
       <p>Quick DFS picks powered by live signals</p>
     </section>
 
-    <section class="arena-grid">
-      <article class="draft-card">
-        <h3>Josh Allen</h3>
-        <p>Passing Yards</p>
-        <strong class="price-up">Over 285.5</strong>
-      </article>
+    <section class="content-card">
+      <h2>Pick Types</h2>
+      <p class="muted-text">Spread, moneyline, over/under, and margin of victory lines update in real time.</p>
+      <div class="arena-meta">
+        <span class="stat-chip">Spread</span>
+        <span class="stat-chip">Moneyline</span>
+        <span class="stat-chip">Over/Under</span>
+        <span class="stat-chip">Margin of Victory</span>
+      </div>
+    </section>
 
-      <article class="draft-card">
-        <h3>Luka Dončić</h3>
-        <p>Points</p>
-        <strong class="price-up">Over 30.5</strong>
-      </article>
+    <section class="content-card lock-panel" data-lock-in-minutes="40" data-lock-target=".pick-board, .pick-slip">
+      <div class="lock-row">
+        <div class="lock-copy">
+          <h2>Projection Lock</h2>
+          <span class="lock-note">Pick lines stop updating at lock to keep entries fair.</span>
+        </div>
+        <span class="status open" data-lock-badge>Open</span>
+      </div>
+      <div class="arena-meta">
+        <span class="stat-chip" data-lock-meta>Locks in 40m</span>
+        <span class="stat-chip">No late swap edge</span>
+        <span class="stat-chip">Auto-finalize slips</span>
+      </div>
+    </section>
+
+    <section class="pick-layout">
+      <div class="pick-board">
+        <article class="draft-card pick-card">
+          <h3>Lakers vs Warriors</h3>
+          <p>Spread</p>
+          <strong class="price-up">LAL -3.5</strong>
+          <div class="pick-meta">
+            <span>NBA</span>
+            <span>Tip 7:30 PM ET</span>
+          </div>
+          <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In" data-pick="LAL -3.5 Spread">Add Pick</button>
+        </article>
+
+        <article class="draft-card pick-card">
+          <h3>Bills vs Chiefs</h3>
+          <p>Moneyline</p>
+          <strong class="price-up">BUF -165</strong>
+          <div class="pick-meta">
+            <span>NFL</span>
+            <span>Kickoff 8:15 PM ET</span>
+          </div>
+          <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In" data-pick="BUF Moneyline -165">Add Pick</button>
+        </article>
+
+        <article class="draft-card pick-card">
+          <h3>Dodgers vs Padres</h3>
+          <p>Over/Under</p>
+          <strong class="price-up">Over 8.5</strong>
+          <div class="pick-meta">
+            <span>MLB</span>
+            <span>First Pitch 9:05 PM ET</span>
+          </div>
+          <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In" data-pick="Over 8.5 Runs">Add Pick</button>
+        </article>
+
+        <article class="draft-card pick-card">
+          <h3>Rangers vs Bruins</h3>
+          <p>Moneyline</p>
+          <strong class="price-up">NYR +120</strong>
+          <div class="pick-meta">
+            <span>NHL</span>
+            <span>Puck Drop 7:00 PM ET</span>
+          </div>
+          <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In" data-pick="NYR Moneyline +120">Add Pick</button>
+        </article>
+
+        <article class="draft-card pick-card">
+          <h3>Heat vs Celtics</h3>
+          <p>Margin of Victory</p>
+          <strong class="price-up">BOS 1-10</strong>
+          <div class="pick-meta">
+            <span>NBA</span>
+            <span>Tip 8:00 PM ET</span>
+          </div>
+          <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In" data-pick="BOS 1-10 MOV">Add Pick</button>
+        </article>
+
+        <article class="draft-card pick-card">
+          <h3>49ers vs Rams</h3>
+          <p>Over/Under</p>
+          <strong class="price-up">Under 45.5</strong>
+          <div class="pick-meta">
+            <span>NFL</span>
+            <span>Kickoff 4:05 PM ET</span>
+          </div>
+          <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In" data-pick="Under 45.5 Total">Add Pick</button>
+        </article>
+      </div>
+
+      <aside class="content-card pick-slip">
+        <h3>Pick Slip</h3>
+        <p class="muted-text">Stack 2-5 picks for higher multipliers.</p>
+        <ul class="pick-slip-list" data-pick-slip>
+          <li class="pick-slip-item"><span>No picks yet</span><span>—</span></li>
+        </ul>
+        <div class="arena-meta">
+          <span class="stat-chip" data-slip-count>Entries: 0</span>
+          <span class="stat-chip">Max Payout: 5x</span>
+          <span class="stat-chip">Auto-save</span>
+        </div>
+        <div class="pick-actions">
+          <button class="btn-primary" type="button" data-auth-required data-auth-locked-label="Sign In">Submit Entry</button>
+          <button class="btn-secondary" type="button" data-clear-slip>Clear</button>
+        </div>
+      </aside>
     </section>
   </main>
 
@@ -158,6 +260,8 @@
       <a href="contest-lobby.html">Contests</a>
       <a href="live-run.html">Live Run</a>
       <a href="community.html">Community</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
     </nav>
 
     <div class="footer-social">

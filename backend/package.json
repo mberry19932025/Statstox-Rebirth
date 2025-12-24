@@ -1,0 +1,19 @@
+{
+  "name": "statstox-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "StatStox API (DFS + Market)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "hpp": "^0.2.3",
+    "morgan": "^1.10.0"
+  }
+}

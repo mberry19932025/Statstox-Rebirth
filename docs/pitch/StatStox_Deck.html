@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StatStox Pitch Deck</title>
+  <style>
+    :root{
+      --bg:#050807;
+      --panel:#0b0f0e;
+      --green:#00ff88;
+      --muted:#9aa9a0;
+      --gold:#d6b36a;
+      --pad:36px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: "Oxanium", "Rajdhani", "Trebuchet MS", sans-serif;
+      background:var(--bg);
+      color:#e7f7ef;
+      line-height:1.55;
+    }
+    .deck{
+      display:grid;
+      gap:24px;
+      padding:24px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .slide{
+      min-height:520px;
+      padding:var(--pad);
+      border-radius:18px;
+      background:linear-gradient(160deg, rgba(9,12,11,.96), rgba(5,8,7,.96));
+      border:1px solid rgba(0,255,136,.25);
+      box-shadow:0 16px 30px rgba(0,0,0,.5);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:flex-start;
+    }
+    .kicker{
+      color:var(--green);
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-size:.7rem;
+      font-weight:600;
+    }
+    h1, h2{
+      margin:0;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      line-height:1.15;
+    }
+    h1{ font-size:2.35rem; }
+    h2{ font-size:1.55rem; }
+    p{ margin:0; }
+    .muted{ color:var(--muted); max-width:900px; }
+    .contact-link{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid rgba(0,255,136,.35);
+    }
+    .contact-link:hover{ color:var(--green); }
+    ul{
+      margin:0;
+      padding-left:18px;
+      color:#d3e5dc;
+      line-height:1.55;
+      display:grid;
+      gap:6px;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:auto;
+    }
+    .chip{
+      border-radius:999px;
+      padding:6px 12px;
+      border:1px solid rgba(0,255,136,.35);
+      font-size:.75rem;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:#eafff6;
+    }
+    .chip.gold{
+      border-color:rgba(214,179,106,.6);
+      color:#fff0c4;
+    }
+    .grid{
+      display:grid;
+      gap:12px;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    @media (max-width: 720px){
+      .deck{ padding:16px; }
+      .slide{ min-height:auto; padding:24px; }
+      h1{ font-size:2rem; }
+      h2{ font-size:1.35rem; }
+      .grid{ grid-template-columns:1fr; }
+    }
+    @media print{
+      body{ background:#fff; }
+      .deck{ padding:0; }
+      .slide{
+        page-break-after:always;
+        border:1px solid #e6e6e6;
+        box-shadow:none;
+        color:#111;
+        background:#fff;
+      }
+      .kicker{ color:#0a7f48; }
+      .chip{ color:#111; border-color:#0a7f48; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide">
+      <div class="kicker">StatStox</div>
+      <h1>We Are Changing The Game While Changing The Game</h1>
+      <p class="muted">Founder: Micheal Berry · <a class="contact-link" href="mailto:mberry19932025@gmail.com">mberry19932025@gmail.com</a> · <a class="contact-link" href="tel:+18325080893">832-508-0893</a></p>
+      <p class="muted">I’m building StatStox with heart, grit, and a mission to make sports competition more inclusive and electric.</p>
+      <div class="chips">
+        <span class="chip">DFS + Market</span>
+        <span class="chip">Real-Time Signals</span>
+        <span class="chip">Fair Payouts</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Problem</div>
+      <h2>Fantasy Sports Is Fragmented</h2>
+      <ul>
+        <li>Contests, pick’em, and social are split across platforms.</li>
+        <li>Users want real-time engagement with fair, transparent payouts.</li>
+        <li>Market-style pricing doesn’t exist in DFS.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Solution</div>
+      <h2>One Platform For Play, Trade, And Community</h2>
+      <ul>
+        <li>DFS contests + player market + social feeds in one hub.</li>
+        <li>Projection locks and payout caps keep it fair.</li>
+        <li>StatCoin credits power rewards, off-chain and compliant.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Product</div>
+      <h2>Core Modes</h2>
+      <div class="grid">
+        <ul>
+          <li>Draft Arena</li>
+          <li>Draft Lobby</li>
+          <li>FlexPix</li>
+          <li>Roster Run</li>
+        </ul>
+        <ul>
+          <li>Market Arena</li>
+          <li>Market Feed</li>
+          <li>Momentum Run</li>
+          <li>Community Feed</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Differentiation</div>
+      <h2>Market Mechanics Without Stock Risk</h2>
+      <ul>
+        <li>Player prices move with performance data.</li>
+        <li>Projection locks remove late edge.</li>
+        <li>StatCoin credits reward engagement, not equity.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Business Model</div>
+      <h2>Multiple Revenue Streams</h2>
+      <ul>
+        <li>DFS rake on contests.</li>
+        <li>Market spreads and trading fees.</li>
+        <li>VIP subscriptions and premium tools.</li>
+        <li>Promos and creator partnerships.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Founder Story</div>
+      <h2>Built From Love Of Sports</h2>
+      <p class="muted">Micheal Berry has cerebral palsy and built StatStox to make sports competition more accessible, social, and fair for everyone. This is a mission-led platform built to unite fans and empower new voices.</p>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Traction</div>
+      <h2>Investor Demo Live</h2>
+      <ul>
+        <li>Real-time feed visuals and social engagement.</li>
+        <li>Clear compliance roadmap (geofencing, KYC, responsible gaming).</li>
+        <li>Backend API stubs ready for data provider integration.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Go-To-Market</div>
+      <h2>Creators + Teams + Community</h2>
+      <ul>
+        <li>Creator rooms and team-based communities.</li>
+        <li>Organic sports influencers + targeted paid acquisition.</li>
+        <li>Partnerships with data and payment rails.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Financials</div>
+      <h2>Year 1 Target</h2>
+      <ul>
+        <li>Revenue from DFS rake + market fees + subscriptions.</li>
+        <li>Costs: data feeds, infra, payroll, compliance.</li>
+        <li>Break-even target: Year 2 with scale.</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">Break-even: 4k-6k payers</span>
+        <span class="chip gold">18-30 month runway</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Why Partner</div>
+      <h2>Join The Team That Wins</h2>
+      <ul>
+        <li>Founder-led vision with a powerful, authentic story.</li>
+        <li>Unique product blend: DFS, market mechanics, and social.</li>
+        <li>Clear compliance roadmap and investor-ready demo.</li>
+        <li>Massive sports market with real fan energy.</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">Mission-Driven</span>
+        <span class="chip">Scalable Revenue</span>
+        <span class="chip">Community First</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">Ask</div>
+      <h2>Raising $1.0M Seed</h2>
+      <ul>
+        <li>$1.0M for 15% equity (post-money $6.7M).</li>
+        <li>Use of funds: 45% product, 20% data/infra, 15% compliance, 20% growth.</li>
+        <li>Target runway: 18 months to beta + compliance rollout.</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">Let’s Build Together</span>
+        <span class="chip gold">Founder Retains 85%</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,689 @@
+openapi: 3.0.3
+info:
+  title: StatStox API
+  version: 1.0.0
+  description: >
+    StatStox API separates DFS contest logic from the player market. All endpoints
+    include real-time metadata, payout caps, and compliance-oriented limits.
+servers:
+  - url: http://localhost:5000/v1
+    description: Local development
+  - url: https://api.statstox.com/v1
+    description: Production
+
+tags:
+  - name: Auth
+  - name: Users
+  - name: Sports
+  - name: Players
+  - name: DFS
+  - name: Market
+  - name: Feeds
+  - name: Transactions
+  - name: Wallet
+
+paths:
+  /meta/health:
+    get:
+      tags: [Auth]
+      summary: Health check
+      responses:
+        "200":
+          description: Service is healthy
+
+  /sports/leagues:
+    get:
+      tags: [Sports]
+      summary: List leagues and seasonal availability
+      parameters:
+        - in: query
+          name: active
+          schema: { type: boolean }
+        - in: query
+          name: seasonal
+          schema: { type: boolean }
+      responses:
+        "200":
+          description: League list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/League" }
+
+  /sports/schedule:
+    get:
+      tags: [Sports]
+      summary: Daily schedule with start times
+      parameters:
+        - in: query
+          name: date
+          required: true
+          schema: { type: string, format: date }
+        - in: query
+          name: sport
+          schema: { type: string }
+      responses:
+        "200":
+          description: Event schedule
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Event" }
+
+  /players:
+    get:
+      tags: [Players]
+      summary: List players with filters
+      parameters:
+        - in: query
+          name: sport
+          schema: { type: string }
+        - in: query
+          name: leagueId
+          schema: { type: string }
+        - in: query
+          name: status
+          schema: { type: string, enum: [active, injured, inactive] }
+        - in: query
+          name: marketEnabled
+          schema: { type: boolean }
+        - in: query
+          name: dfsEnabled
+          schema: { type: boolean }
+        - in: query
+          name: q
+          schema: { type: string }
+      responses:
+        "200":
+          description: Player list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Player" }
+
+  /players/{playerId}:
+    get:
+      tags: [Players]
+      summary: Player profile
+      parameters:
+        - in: path
+          name: playerId
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Player detail
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Player" }
+
+  /players/{playerId}/stats:
+    get:
+      tags: [Players]
+      summary: Historical and real-time stats
+      parameters:
+        - in: path
+          name: playerId
+          required: true
+          schema: { type: string }
+        - in: query
+          name: season
+          schema: { type: string }
+        - in: query
+          name: lastN
+          schema: { type: integer, minimum: 1, maximum: 50 }
+      responses:
+        "200":
+          description: Stats with game logs
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PlayerStats" }
+
+  /dfs/contests:
+    get:
+      tags: [DFS]
+      summary: List DFS contests
+      parameters:
+        - in: query
+          name: type
+          schema: { type: string, enum: [classic, showdown, snake, tiers, tournament] }
+        - in: query
+          name: sport
+          schema: { type: string }
+        - in: query
+          name: status
+          schema: { type: string, enum: [open, live, closed, settled] }
+      responses:
+        "200":
+          description: DFS contests
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/DFSContest" }
+
+  /dfs/contests/{contestId}:
+    get:
+      tags: [DFS]
+      summary: Contest detail
+      parameters:
+        - in: path
+          name: contestId
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Contest detail
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DFSContest" }
+
+  /dfs/contests/{contestId}/enter:
+    post:
+      tags: [DFS]
+      summary: Enter a contest
+      parameters:
+        - in: path
+          name: contestId
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lineupId: { type: string }
+                entries: { type: integer, minimum: 1 }
+      responses:
+        "200":
+          description: Entry accepted
+
+  /dfs/rules:
+    get:
+      tags: [DFS]
+      summary: DFS payout and entry rules
+      responses:
+        "200":
+          description: Rules snapshot
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DFSRules" }
+
+  /market/contracts:
+    get:
+      tags: [Market]
+      summary: Player contracts (seasonal)
+      parameters:
+        - in: query
+          name: season
+          schema: { type: string }
+        - in: query
+          name: sport
+          schema: { type: string }
+      responses:
+        "200":
+          description: Contract list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/MarketContract" }
+
+  /market/quotes:
+    get:
+      tags: [Market]
+      summary: Real-time player quotes
+      parameters:
+        - in: query
+          name: sport
+          schema: { type: string }
+        - in: query
+          name: playerId
+          schema: { type: string }
+      responses:
+        "200":
+          description: Quote list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/MarketQuote" }
+
+  /market/orders:
+    post:
+      tags: [Market]
+      summary: Place a buy/sell order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/MarketOrder" }
+      responses:
+        "200":
+          description: Order accepted
+
+  /market/orders/{orderId}:
+    get:
+      tags: [Market]
+      summary: Order status
+      parameters:
+        - in: path
+          name: orderId
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Order detail
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/MarketOrder" }
+
+  /market/rules:
+    get:
+      tags: [Market]
+      summary: Market rules and profit model
+      responses:
+        "200":
+          description: Rules snapshot
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/MarketRules" }
+
+  /feeds/dfs:
+    get:
+      tags: [Feeds]
+      summary: DFS feed items
+      responses:
+        "200":
+          description: Feed list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/FeedItem" }
+
+  /feeds/market:
+    get:
+      tags: [Feeds]
+      summary: Market feed items
+      responses:
+        "200":
+          description: Feed list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/FeedItem" }
+
+  /feeds/sports:
+    get:
+      tags: [Feeds]
+      summary: Sports feed items
+      responses:
+        "200":
+          description: Feed list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/FeedItem" }
+
+  /feeds/community:
+    get:
+      tags: [Feeds]
+      summary: Community feed items
+      responses:
+        "200":
+          description: Feed list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/FeedItem" }
+
+  /feeds/{feedId}/reactions:
+    post:
+      tags: [Feeds]
+      summary: React to a feed item (like/comment/share)
+      parameters:
+        - in: path
+          name: feedId
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [like, comment, share]
+                payload:
+                  type: string
+      responses:
+        "200":
+          description: Reaction accepted
+
+  /wallet:
+    get:
+      tags: [Wallet]
+      summary: Wallet balances
+      responses:
+        "200":
+          description: Wallet balances
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/WalletBalance" }
+
+  /wallet/payment-methods:
+    get:
+      tags: [Wallet]
+      summary: Supported payment methods
+      responses:
+        "200":
+          description: Payment methods
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/PaymentMethod" }
+
+  /wallet/statcoin:
+    get:
+      tags: [Wallet]
+      summary: StatCoin details
+      responses:
+        "200":
+          description: StatCoin profile
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/StatCoin" }
+
+  /wallet/statcoin/purchase:
+    post:
+      tags: [Wallet]
+      summary: Purchase StatCoin credits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount: { type: number }
+                paymentMethod: { type: string }
+      responses:
+        "200":
+          description: Purchase accepted
+
+  /wallet/dividends:
+    get:
+      tags: [Wallet]
+      summary: StatCoin dividend credits
+      responses:
+        "200":
+          description: Dividend list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Dividend" }
+
+  /transactions:
+    get:
+      tags: [Transactions]
+      summary: Account transactions
+      responses:
+        "200":
+          description: Transaction list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Transaction" }
+
+components:
+  schemas:
+    RealTimeMeta:
+      type: object
+      properties:
+        updatedAt: { type: string, format: date-time }
+        nextUpdateAt: { type: string, format: date-time }
+        intervalSeconds: { type: integer }
+        isLive: { type: boolean }
+
+    League:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        sport: { type: string }
+        isSeasonal: { type: boolean }
+        activeWindow:
+          type: object
+          properties:
+            start: { type: string, format: date }
+            end: { type: string, format: date }
+        status: { type: string, enum: [active, inactive] }
+
+    Event:
+      type: object
+      properties:
+        id: { type: string }
+        leagueId: { type: string }
+        name: { type: string }
+        startTime: { type: string, format: date-time }
+        status: { type: string, enum: [scheduled, live, final] }
+        venue: { type: string }
+        timezone: { type: string }
+        realTime: { $ref: "#/components/schemas/RealTimeMeta" }
+
+    Player:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        team: { type: string }
+        sport: { type: string }
+        position: { type: string }
+        status: { type: string }
+        dfsEnabled: { type: boolean }
+        marketEnabled: { type: boolean }
+        lastUpdated: { type: string, format: date-time }
+
+    PlayerStats:
+      type: object
+      properties:
+        playerId: { type: string }
+        season: { type: string }
+        aggregates:
+          type: object
+          additionalProperties: true
+        gameLogs:
+          type: array
+          items: { $ref: "#/components/schemas/GameLog" }
+        realTime: { $ref: "#/components/schemas/RealTimeMeta" }
+
+    GameLog:
+      type: object
+      properties:
+        gameId: { type: string }
+        date: { type: string, format: date }
+        opponent: { type: string }
+        stats:
+          type: object
+          additionalProperties: true
+        fantasyPoints: { type: number }
+
+    PayoutCurve:
+      type: object
+      properties:
+        shape: { type: string, enum: [flat, balanced, topHeavy] }
+        minCashRate: { type: number }
+        maxShare: { type: number }
+        payoutCap: { type: number }
+        note: { type: string }
+
+    DFSContest:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        type: { type: string }
+        sport: { type: string }
+        entryFee: { type: number }
+        prizePool: { type: number }
+        maxEntries: { type: integer }
+        entryCap: { type: integer }
+        payoutCap: { type: number }
+        rakePercent: { type: number }
+        payoutCurve: { $ref: "#/components/schemas/PayoutCurve" }
+        status: { type: string }
+        startTime: { type: string, format: date-time }
+        realTime: { $ref: "#/components/schemas/RealTimeMeta" }
+
+    DFSRules:
+      type: object
+      properties:
+        minEntryFee: { type: number }
+        maxEntryFee: { type: number }
+        maxEntriesPerUser: { type: integer }
+        defaultRakePercent: { type: number }
+        payoutCapPercent: { type: number }
+        payoutCurveDefault: { $ref: "#/components/schemas/PayoutCurve" }
+        notes: { type: string }
+
+    MarketContract:
+      type: object
+      properties:
+        id: { type: string }
+        playerId: { type: string }
+        season: { type: string }
+        expiryDate: { type: string, format: date }
+        maxShares: { type: number }
+        dayTradeLimit: { type: integer }
+        priceTick: { type: number }
+
+    MarketQuote:
+      type: object
+      properties:
+        playerId: { type: string }
+        price: { type: number }
+        change: { type: number }
+        volume: { type: number }
+        signal: { type: string, enum: [bullish, bearish, neutral] }
+        realTime: { $ref: "#/components/schemas/RealTimeMeta" }
+
+    MarketOrder:
+      type: object
+      properties:
+        id: { type: string }
+        playerId: { type: string }
+        type: { type: string, enum: [buy, sell] }
+        quantity: { type: number }
+        price: { type: number }
+        fee: { type: number }
+        status: { type: string, enum: [pending, filled, canceled] }
+        createdAt: { type: string, format: date-time }
+
+    MarketRules:
+      type: object
+      properties:
+        spreadBps: { type: number }
+        maxDailyTrades: { type: integer }
+        maxPositionSize: { type: number }
+        feePercent: { type: number }
+        payoutCapPercent: { type: number }
+        notes: { type: string }
+
+    WalletBalance:
+      type: object
+      properties:
+        cashBalance: { type: number }
+        statCoinBalance: { type: number }
+        pending: { type: number }
+        payoutCaps:
+          type: object
+          properties:
+            dfs: { type: number }
+            market: { type: number }
+        updatedAt: { type: string, format: date-time }
+
+    PaymentMethod:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        type: { type: string }
+        rails:
+          type: array
+          items: { type: string }
+        status: { type: string }
+        supports:
+          type: object
+          properties:
+            deposit: { type: boolean }
+            withdraw: { type: boolean }
+
+    StatCoin:
+      type: object
+      properties:
+        symbol: { type: string }
+        name: { type: string }
+        rateUsd: { type: number }
+        minPurchase: { type: number }
+        maxPurchase: { type: number }
+        status: { type: string }
+        dividends:
+          type: object
+          properties:
+            mode: { type: string }
+            cadence: { type: string }
+            note: { type: string }
+
+    Dividend:
+      type: object
+      properties:
+        id: { type: string }
+        source: { type: string }
+        amount: { type: number }
+        currency: { type: string }
+        status: { type: string }
+        createdAt: { type: string, format: date-time }
+
+    FeedItem:
+      type: object
+      properties:
+        id: { type: string }
+        type: { type: string, enum: [signal, news, update] }
+        title: { type: string }
+        text: { type: string }
+        sport: { type: string }
+        source: { type: string }
+        createdAt: { type: string, format: date-time }
+        reactions:
+          type: array
+          items: { $ref: "#/components/schemas/Reaction" }
+
+    Reaction:
+      type: object
+      properties:
+        type: { type: string, enum: [like, comment, share] }
+        count: { type: integer }
+
+    Transaction:
+      type: object
+      properties:
+        id: { type: string }
+        type: { type: string }
+        amount: { type: number }
+        currency: { type: string }
+        status: { type: string }
+        createdAt: { type: string, format: date-time }

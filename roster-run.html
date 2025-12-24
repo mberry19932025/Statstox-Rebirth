@@ -94,6 +94,8 @@
         </div>
 
         <a href="rules.html">Rules</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
 
         <div class="nav-group">
           <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">Account ▾</button>
@@ -101,6 +103,7 @@
             <a href="account.html">Profile</a>
             <a href="portfolio.html">Portfolio</a>
             <a href="transactions.html">Transactions</a>
+            <a href="deposit-withdraw.html">Wallet</a>
             <a href="settings.html">Settings</a>
             <a href="login.html">Login</a>
             <a href="signup.html">Sign Up</a>
@@ -118,23 +121,94 @@
   <p>Build the best lineup and compete</p>
 </header>
 
+<section class="content-card lock-panel" data-lock-in-minutes="55" data-lock-target=".lineup-layout, .lineup-actions">
+  <div class="lock-row">
+    <div class="lock-copy">
+      <h2>Entry Lock</h2>
+      <span class="lock-note">Lineups lock before slate start to protect fairness.</span>
+    </div>
+    <span class="status open" data-lock-badge>Open</span>
+  </div>
+  <div class="arena-meta">
+    <span class="stat-chip" data-lock-meta>Locks in 55m</span>
+    <span class="stat-chip">No late swap edge</span>
+    <span class="stat-chip">Auto-submit enabled</span>
+  </div>
+</section>
+
+<section class="lineup-layout">
+  <div class="lineup-grid">
+    <div class="lineup-slot">
+      <strong>QB</strong>
+      <span>Open slot</span>
+      <p class="muted-text">Tap to add a quarterback</p>
+    </div>
+    <div class="lineup-slot">
+      <strong>RB</strong>
+      <span>Open slot</span>
+      <p class="muted-text">Add a running back</p>
+    </div>
+    <div class="lineup-slot">
+      <strong>WR</strong>
+      <span>Open slot</span>
+      <p class="muted-text">Add a wide receiver</p>
+    </div>
+    <div class="lineup-slot">
+      <strong>FLEX</strong>
+      <span>Open slot</span>
+      <p class="muted-text">RB/WR/TE eligible</p>
+    </div>
+  </div>
+
+  <aside class="lineup-panel">
+    <h2>Team Builder</h2>
+    <p class="muted-text">Create stacks, manage salary, and enter contests.</p>
+    <div class="arena-meta">
+      <span class="stat-chip">Salary Cap: $50k</span>
+      <span class="stat-chip">Entries: 1-20</span>
+      <span class="stat-chip">Payout Cap: 35%</span>
+    </div>
+    <div class="arena-meta">
+      <span class="stat-chip">Stack Builder</span>
+      <span class="stat-chip">Late News Sync</span>
+    </div>
+    <div class="lineup-actions">
+      <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In">Auto-Fill</button>
+      <button class="btn-primary" type="button" data-auth-required data-auth-locked-label="Sign In">Enter Contest</button>
+    </div>
+  </aside>
+</section>
+
 <section class="arena-grid">
-
   <article class="arena-card">
-    <h3>Contest Type</h3>
-    <p>Salary Cap DFS</p>
+    <h3>Creator Rooms</h3>
+    <p>Join DFS rooms curated by StatStox creators</p>
+    <ul class="arena-meta">
+      <li>Team stacks + payouts</li>
+      <li>Community shoutouts</li>
+    </ul>
+    <a href="contest-lobby.html" class="btn-secondary">Browse Rooms</a>
   </article>
 
   <article class="arena-card">
-    <h3>Roster Slots</h3>
-    <p>QB · RB · WR · FLEX</p>
+    <h3>StatStox Slates</h3>
+    <p>Multi-sport slates with balanced payout curves</p>
+    <ul class="arena-meta">
+      <li>Spread + totals</li>
+      <li>Entry caps</li>
+    </ul>
+    <a href="draft-lobby.html" class="btn-secondary">View Slates</a>
   </article>
 
   <article class="arena-card">
-    <h3>Entry Fee</h3>
-    <p>$1 – $100</p>
+    <h3>Live Draft Bridge</h3>
+    <p>Convert lineups into live contests</p>
+    <ul class="arena-meta">
+      <li>Auto-optimized pools</li>
+      <li>Projections locked</li>
+    </ul>
+    <a href="draft-arena.html" class="btn-secondary">Enter Draft</a>
   </article>
-
 </section>
 
 
@@ -167,6 +241,8 @@
       <a href="contest-lobby.html">Contests</a>
       <a href="live-run.html">Live Run</a>
       <a href="community.html">Community</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
     </nav>
 
     <div class="footer-social">

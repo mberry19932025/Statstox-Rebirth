@@ -1,4 +1,4 @@
-const PAGE_ID = 'contest-arena';
+const PAGE_ID = 'deposit-withdraw';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log(`Loaded ${PAGE_ID} page`);
