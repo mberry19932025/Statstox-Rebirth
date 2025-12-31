@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StatStox One-Pager</title>
+  <meta name="description" content="StatStox one-pager — DFS + player market + social, built for fairness, engagement, and community."/>
+  <meta property="og:title" content="StatStox One-Pager"/>
+  <meta property="og:description" content="DFS + player market + social, built for fairness, engagement, and community."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://mberry19932025.github.io/Statstox-Rebirth/docs/pitch/StatStox_OnePager.html"/>
+  <meta property="og:image" content="https://mberry19932025.github.io/Statstox-Rebirth/images/logo.png"/>
+  <meta property="og:site_name" content="StatStox"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="StatStox One-Pager"/>
+  <meta name="twitter:description" content="DFS + player market + social, built for fairness, engagement, and community."/>
+  <meta name="twitter:image" content="https://mberry19932025.github.io/Statstox-Rebirth/images/logo.png"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+    :root{
+      --bg:#050807;
+      --panel:#0b0f0e;
+      --green:#00ff88;
+      --muted:#9aa9a0;
+      --gold:#d6b36a;
+      --border:rgba(0,255,136,.2);
+      --shadow:0 18px 36px rgba(0,0,0,.55);
+      --radius:16px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:"Rajdhani","Trebuchet MS",sans-serif;
+      background:var(--bg);
+      color:#e7f7ef;
+      line-height:1.55;
+    }
+    .sheet{
+      max-width:1100px;
+      margin:32px auto;
+      padding:32px;
+      background:linear-gradient(160deg, rgba(9,12,11,.96), rgba(5,8,7,.96));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .sheet::before{
+      content:"";
+      position:absolute;
+      inset:-60% -40%;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0,255,136,.08), transparent 40%),
+        linear-gradient(120deg, transparent 35%, rgba(0,255,136,.18), transparent 65%),
+        linear-gradient(160deg, rgba(0,0,0,.7), transparent 60%);
+      opacity:.25;
+      pointer-events:none;
+      animation:sheen 18s linear infinite;
+    }
+    .sheet > *{
+      position:relative;
+      z-index:1;
+    }
+    @keyframes sheen{
+      0%{ transform:translateX(-20%); }
+      100%{ transform:translateX(20%); }
+    }
+    .hero{
+      display:grid;
+      gap:12px;
+      padding-bottom:18px;
+      border-bottom:1px solid rgba(0,255,136,.15);
+    }
+    .kicker{
+      color:var(--green);
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-size:.72rem;
+      font-family:"Orbitron","Rajdhani",sans-serif;
+    }
+    h1{
+      margin:0;
+      font-size:2.2rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-family:"Orbitron","Rajdhani",sans-serif;
+    }
+    h2{
+      margin:0 0 8px;
+      font-size:1.05rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-family:"Orbitron","Rajdhani",sans-serif;
+      color:var(--green);
+    }
+    p{ margin:0; }
+    .subtitle{ color:var(--muted); max-width:820px; }
+    .contact{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:.95rem;
+      color:var(--muted);
+    }
+    .contact a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid rgba(0,255,136,.35);
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .chip{
+      border-radius:999px;
+      padding:6px 12px;
+      border:1px solid rgba(0,255,136,.35);
+      font-size:.72rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#eafff6;
+      font-family:"Orbitron","Rajdhani",sans-serif;
+    }
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      margin-top:18px;
+    }
+    .card{
+      background:rgba(5,8,7,.75);
+      border:1px solid rgba(0,255,136,.12);
+      border-left:3px solid rgba(0,255,136,.35);
+      border-radius:12px;
+      padding:16px;
+      min-height:120px;
+    }
+    ul{
+      margin:0;
+      padding-left:18px;
+      color:#d3e5dc;
+      display:grid;
+      gap:6px;
+    }
+    .two-col{
+      display:grid;
+      gap:16px;
+      grid-template-columns: 1.1fr .9fr;
+      margin-top:18px;
+    }
+    .ask{
+      display:grid;
+      gap:10px;
+    }
+    .ask .chip{
+      border-color:rgba(214,179,106,.6);
+      color:#fff0c4;
+    }
+    @media (max-width: 900px){
+      .sheet{ margin:16px; padding:24px; }
+      .grid, .two-col{ grid-template-columns:1fr; }
+      h1{ font-size:1.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="hero">
+      <div class="kicker">StatStox</div>
+      <h1>StatStox One-Pager</h1>
+      <p class="subtitle">DFS + player market + social, built for fairness, engagement, and community.</p>
+      <div class="contact">
+        <span>Founder: Micheal Berry</span>
+        <a href="mailto:mberry19932025@gmail.com">mberry19932025@gmail.com</a>
+        <a href="tel:+18325080893">832-508-0893</a>
+        <a href="https://mberry19932025.github.io/Statstox-Rebirth/">Website</a>
+      </div>
+      <div class="chips">
+        <span class="chip">DFS + Market</span>
+        <span class="chip">Real-Time Signals</span>
+        <span class="chip">Fair Payouts</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Vision</h2>
+        <p>StatStox turns player performance into a live sports market and DFS experience, built for fairness, engagement, and community.</p>
+      </article>
+      <article class="card">
+        <h2>Founder Story</h2>
+        <p>Micheal Berry has cerebral palsy and built StatStox to make sports competition more accessible, social, and fair.</p>
+      </article>
+      <article class="card">
+        <h2>Problem</h2>
+        <p>Fantasy sports products are siloed. Fans want a single platform that blends contests, pick'em, real-time signals, and social engagement without unfair edges.</p>
+      </article>
+      <article class="card">
+        <h2>Solution</h2>
+        <ul>
+          <li>DFS contests (Draft Arena, Roster Run, FlexPix)</li>
+          <li>Player market trading (Market Arena, Momentum Run)</li>
+          <li>Live social feeds (Community Feed, Sports Feed)</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Differentiation</h2>
+        <ul>
+          <li>Projection locks to protect fairness</li>
+          <li>Payout caps and entry limits to prevent exploitation</li>
+          <li>StatCoin credits for rewards (off-chain, demo-safe)</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Business Model</h2>
+        <ul>
+          <li>DFS rake on contests</li>
+          <li>Market spreads and trading fees</li>
+          <li>VIP subscriptions and premium tools</li>
+          <li>Promos and creator partnerships</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Compliance + Security</h2>
+        <ul>
+          <li>Age verification and geofencing ready</li>
+          <li>Responsible gaming limits</li>
+          <li>Rate limits, audit logs, encryption, fraud monitoring</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Traction (Demo Stage)</h2>
+        <ul>
+          <li>Full investor demo live</li>
+          <li>Real-time feed visuals and pick logic</li>
+          <li>Clear backend and compliance roadmap</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="two-col">
+      <article class="card">
+        <h2>Roadmap</h2>
+        <ul>
+          <li>Backend v1 (auth, wallets, DFS, market)</li>
+          <li>Data provider integration</li>
+          <li>Compliance rollout by region</li>
+          <li>Creator room launch</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Why Partner</h2>
+        <ul>
+          <li>Authentic founder story and loyal sports community</li>
+          <li>Unique product blend: DFS + market mechanics + social</li>
+          <li>Clear compliance roadmap and investor-ready demo</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="two-col">
+      <article class="card">
+        <h2>Team</h2>
+        <p>Founder: Micheal Berry</p>
+        <p class="subtitle">Mission-driven builder and lifelong sports fan.</p>
+      </article>
+      <article class="card ask">
+        <h2>Ask</h2>
+        <p>Raising $1.0M seed for 15% equity (post-money $6.7M) to complete backend, compliance, and go-to-market.</p>
+        <div class="chips">
+          <span class="chip">Investor-Ready Demo</span>
+          <span class="chip">Founder-Led</span>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
