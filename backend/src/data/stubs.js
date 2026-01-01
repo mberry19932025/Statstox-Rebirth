@@ -135,6 +135,16 @@ const players = [
   }
 ];
 
+const demoUser = {
+  id: 'user-demo-001',
+  username: 'statstoxfan',
+  email: 'demo@statstox.com',
+  tier: 'free',
+  status: 'active',
+  verified: true,
+  createdAt: nowIso()
+};
+
 const playerStats = {
   'josh-allen': {
     playerId: 'josh-allen',
@@ -432,6 +442,7 @@ module.exports = {
   leagues,
   schedule,
   players,
+  demoUser,
   playerStats,
   dfsRules,
   dfsContests,

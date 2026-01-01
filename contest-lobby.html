@@ -131,6 +131,45 @@
     </section>
 
     <section class="lobby-surface">
+      <div class="filter-bar">
+        <select>
+          <option>All Entry Fees</option>
+          <option>$5</option>
+          <option>$10</option>
+          <option>$20+</option>
+        </select>
+        <select>
+          <option>All Sizes</option>
+          <option>6 Players</option>
+          <option>10 Players</option>
+          <option>20 Players</option>
+        </select>
+        <select>
+          <option>All Formats</option>
+          <option>Winner Takes</option>
+          <option>Top 3</option>
+          <option>50/50</option>
+          <option>VIP Rooms</option>
+        </select>
+        <select>
+          <option>All Sports</option>
+          <option>NFL</option>
+          <option>NBA</option>
+          <option>MLB</option>
+          <option>NHL</option>
+        </select>
+      </div>
+
+      <section class="content-card">
+        <h2>Contest Lock Window</h2>
+        <p class="muted-text">Entries lock before slate start to keep projections fair for everyone.</p>
+        <div class="arena-meta">
+          <span class="stat-chip">Projection Lock</span>
+          <span class="stat-chip">No late swap edge</span>
+          <span class="stat-chip">Balanced fields</span>
+        </div>
+      </section>
+
       <div class="lobby-grid">
         <article class="lobby-card">
           <h2>StatStox Live Run</h2>
@@ -141,7 +180,7 @@
             <li>📊 Real-time ranks</li>
           </ul>
 
-          <a href="live-run.html" class="btn-primary">View Live</a>
+          <a href="live-run.html" class="btn-primary" data-demo-entry data-entry-label="Live Run Entry">View Live</a>
         </article>
 
         <article class="lobby-card">
@@ -153,7 +192,7 @@
             <li>👥 6–10 Players</li>
           </ul>
 
-          <a href="contest-arena.html" class="btn-primary">Enter Arena</a>
+          <a href="contest-arena.html" class="btn-primary" data-demo-entry data-entry-label="StatStox Classic Entry">Enter Arena</a>
         </article>
 
         <article class="lobby-card">
@@ -165,7 +204,19 @@
             <li>🏆 Premium payouts</li>
           </ul>
 
-          <a href="contest-arena.html" class="btn-warning">Enter VIP</a>
+          <a href="contest-arena.html" class="btn-warning" data-demo-entry data-entry-label="VIP Circuit Entry">Enter VIP</a>
+        </article>
+
+        <article class="lobby-card">
+          <h2>StatStox 50/50</h2>
+          <p>Balanced payouts with protected entry caps</p>
+
+          <ul class="arena-meta">
+            <li>⚖️ Top 50% paid</li>
+            <li>🛡 Entry limits</li>
+          </ul>
+
+          <a href="contest-arena.html" class="btn-secondary" data-demo-entry data-entry-label="50/50 Entry">Enter 50/50</a>
         </article>
       </div>
     </section>

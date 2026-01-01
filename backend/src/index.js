@@ -10,6 +10,7 @@ const {
   leagues,
   schedule,
   players,
+  demoUser,
   playerStats,
   dfsRules,
   dfsContests,
@@ -27,6 +28,31 @@ const {
 
 const app = express();
 const base = '/v1';
+const DEMO_TOKEN = 'statstox-demo-token';
+const inHours = (hours) => new Date(Date.now() + hours * 3600000).toISOString();
+
+const buildAuthPayload = (overrides = {}) => ({
+  token: DEMO_TOKEN,
+  tokenType: 'demo',
+  issuedAt: nowIso(),
+  expiresAt: inHours(24),
+  user: {
+    ...demoUser,
+    ...overrides,
+    lastLoginAt: nowIso()
+  }
+});
+
+const readAuthToken = (req) => {
+  const header = req.headers.authorization || '';
+  if (header.startsWith('Bearer ')) {
+    return header.replace('Bearer ', '').trim();
+  }
+  if (req.query?.token) {
+    return String(req.query.token);
+  }
+  return null;
+};
 
 app.disable('x-powered-by');
 app.use(helmet());
@@ -47,6 +73,65 @@ app.use(generalLimiter);
 app.get(`${base}/meta/health`, (req, res) => {
   res.json({ status: 'ok', time: nowIso() });
 });
+
+app.post(
+  `${base}/auth/login`,
+  writeLimiter,
+  [
+    body('email').isEmail(),
+    body('password').isString().isLength({ min: 6, max: 72 })
+  ],
+  handleValidation,
+  (req, res) => {
+    res.json(buildAuthPayload({ email: req.body.email }));
+  }
+);
+
+app.post(
+  `${base}/auth/signup`,
+  writeLimiter,
+  [
+    body('username').isString().isLength({ min: 2, max: 32 }),
+    body('email').isEmail(),
+    body('password').isString().isLength({ min: 6, max: 72 })
+  ],
+  handleValidation,
+  (req, res) => {
+    res.status(201).json(buildAuthPayload({
+      username: req.body.username,
+      email: req.body.email,
+      verified: false
+    }));
+  }
+);
+
+app.get(`${base}/auth/verify`, (req, res) => {
+  const token = readAuthToken(req);
+  if (token !== DEMO_TOKEN) {
+    return res.status(401).json({ status: 'invalid', error: 'Invalid token' });
+  }
+  res.json({ status: 'verified', user: demoUser, verifiedAt: nowIso() });
+});
+
+app.post(
+  `${base}/demo/entry`,
+  writeLimiter,
+  [
+    body('label').optional().isString().isLength({ max: 120 }),
+    body('entryType').optional().isString().isLength({ max: 64 }),
+    body('target').optional().isString().isLength({ max: 200 }),
+    body('source').optional().isString().isLength({ max: 120 })
+  ],
+  handleValidation,
+  (req, res) => {
+    res.json({
+      status: 'accepted',
+      entryId: `entry-${Date.now()}`,
+      receivedAt: nowIso(),
+      ...req.body
+    });
+  }
+);
 
 app.get(`${base}/sports/leagues`, (req, res) => {
   const { active, seasonal } = req.query;

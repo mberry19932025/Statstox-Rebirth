@@ -2,6 +2,19 @@
    MAIN.JS — GLOBAL CORE
    =============================== */
 
+const DEFAULT_API_BASE = 'http://localhost:5000/v1';
+const REMOTE_API_BASE = 'https://statstox-api.onrender.com/v1';
+
+function resolveApiBase() {
+  const host = window.location.hostname;
+  if (!host || host === 'localhost' || host === '127.0.0.1') {
+    return DEFAULT_API_BASE;
+  }
+  return REMOTE_API_BASE;
+}
+
+window.STATSTOX_API_BASE = window.STATSTOX_API_BASE || resolveApiBase();
+
 document.addEventListener('DOMContentLoaded', async () => {
   /* ---------------------------------
      1. LOAD GLOBAL NAV (optional)
@@ -15,24 +28,28 @@ document.addEventListener('DOMContentLoaded', async () => {
       navMount.innerHTML = await response.text();
       initNavBehavior();
       injectPageBrand();
+      injectMiniGamesLink();
       initFooterSocial();
       initFeedActions();
       initProjectionLocks();
       initLiveUpdates();
       initFavorites();
       initDemoAuth();
+      initDemoEntries();
     } catch (err) {
       console.error('Nav load error:', err);
     }
   } else {
     initNavBehavior();
     injectPageBrand();
+    injectMiniGamesLink();
     initFooterSocial();
     initFeedActions();
     initProjectionLocks();
     initLiveUpdates();
     initFavorites();
     initDemoAuth();
+    initDemoEntries();
   }
 });
 
@@ -82,6 +99,31 @@ function injectPageBrand() {
     `;
     header.prepend(brand);
   });
+}
+
+function injectMiniGamesLink() {
+  const groups = Array.from(document.querySelectorAll('.nav-group'));
+  if (!groups.length) return;
+
+  const target = groups.find((group) => {
+    const trigger = group.querySelector('.nav-trigger');
+    return trigger && trigger.textContent.trim().toLowerCase().startsWith('draft');
+  });
+
+  if (!target) return;
+  const dropdown = target.querySelector('.nav-dropdown');
+  if (!dropdown) return;
+
+  const existing = Array.from(dropdown.querySelectorAll('a')).some((link) =>
+    (link.getAttribute('href') || '').includes('draft.html#mini-games')
+  );
+
+  if (existing) return;
+
+  const link = document.createElement('a');
+  link.href = 'draft.html#mini-games';
+  link.textContent = 'Mini Games';
+  dropdown.appendChild(link);
 }
 
 function initFooterSocial() {
@@ -287,7 +329,8 @@ function initDemoAuth() {
 
   if (!toggle && !statusNodes.length && !gated.length) return;
 
-  const getAuth = () => localStorage.getItem(AUTH_KEY) === 'true';
+  const getAuth = () =>
+    localStorage.getItem(AUTH_KEY) === 'true' || Boolean(localStorage.getItem('statstox:token'));
   const setAuth = (flag) => localStorage.setItem(AUTH_KEY, flag ? 'true' : 'false');
 
   const apply = (flag) => {
@@ -298,15 +341,23 @@ function initDemoAuth() {
     });
 
     gated.forEach((button) => {
+      const allowPreview = button.hasAttribute('data-demo-entry');
       if (!button.dataset.authLabel) {
         button.dataset.authLabel = button.textContent.trim();
       }
-      button.disabled = !flag;
-      button.classList.toggle('is-disabled', !flag);
+      button.classList.remove('is-disabled', 'is-soft-locked');
       button.textContent = flag ? button.dataset.authLabel : (button.dataset.authLockedLabel || 'Sign In');
       if (!flag) {
+        if (allowPreview) {
+          button.disabled = false;
+          button.classList.add('is-soft-locked');
+        } else {
+          button.disabled = true;
+          button.classList.add('is-disabled');
+        }
         button.setAttribute('title', 'Sign in to continue');
       } else {
+        button.disabled = false;
         button.removeAttribute('title');
       }
     });
@@ -321,4 +372,130 @@ function initDemoAuth() {
       apply(next);
     });
   }
+}
+
+function initDemoEntries() {
+  const triggers = document.querySelectorAll('[data-demo-entry]');
+  if (!triggers.length) return;
+
+  const API_BASE = window.STATSTOX_API_BASE || 'http://localhost:5000/v1';
+  const modal = ensureDemoModal();
+
+  const getAuth = () =>
+    localStorage.getItem('statstox:auth') === 'true' || Boolean(localStorage.getItem('statstox:token'));
+
+  const submitEntry = async (payload) => {
+    try {
+      await fetch(`${API_BASE}/demo/entry`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      // demo only; ignore network failures
+    }
+  };
+
+  const openModal = ({ title, message, primaryLabel, primaryHref }) => {
+    const titleNode = modal.querySelector('[data-demo-title]');
+    const copyNode = modal.querySelector('[data-demo-copy]');
+    const primary = modal.querySelector('[data-demo-primary]');
+
+    if (titleNode) titleNode.textContent = title;
+    if (copyNode) copyNode.textContent = message;
+
+    if (primary && primaryHref) {
+      primary.classList.remove('is-hidden');
+      primary.href = primaryHref;
+      primary.textContent = primaryLabel || 'Continue';
+    } else if (primary) {
+      primary.classList.add('is-hidden');
+    }
+
+    modal.classList.add('is-open');
+    document.body.classList.add('modal-open');
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+  };
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal || event.target.closest('[data-demo-close]')) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  triggers.forEach((trigger) => {
+    if (trigger.dataset.demoEntryBound === 'true') return;
+    trigger.dataset.demoEntryBound = 'true';
+
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const label = trigger.dataset.entryLabel || trigger.textContent.trim() || 'Entry';
+      const hrefTarget = trigger.tagName === 'A' ? trigger.getAttribute('href') : '';
+      const target = (trigger.dataset.entryTarget || hrefTarget || '').trim();
+      const cleanTarget = target === '#' ? '' : target;
+      const entryType = trigger.dataset.entryType || '';
+      const authed = getAuth();
+
+      if (trigger.hasAttribute('data-auth-required') && !authed) {
+        openModal({
+          title: 'Sign in required',
+          message: 'Sign in to enter this contest. For demo, use the Login page or toggle Demo Auth in Settings.',
+          primaryLabel: 'Go to Login',
+          primaryHref: 'login.html'
+        });
+        return;
+      }
+
+      submitEntry({
+        label,
+        entryType,
+        target: cleanTarget,
+        source: window.location.pathname
+      });
+
+      openModal({
+        title: 'Entry confirmed',
+        message: `${label} locked in for this slate (demo).`,
+        primaryLabel: cleanTarget ? 'Continue' : 'Close',
+        primaryHref: cleanTarget || ''
+      });
+    });
+  });
+}
+
+function ensureDemoModal() {
+  const existing = document.querySelector('.demo-modal');
+  if (existing) return existing;
+
+  const modal = document.createElement('div');
+  modal.className = 'demo-modal';
+  modal.innerHTML = `
+    <div class="demo-modal-card" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+      <div class="demo-modal-head">
+        <div>
+          <span class="demo-modal-eyebrow">StatStox Demo</span>
+          <h3 id="demo-modal-title" data-demo-title>Entry confirmed</h3>
+        </div>
+        <button class="demo-modal-close" type="button" data-demo-close aria-label="Close">×</button>
+      </div>
+      <p class="demo-modal-copy" data-demo-copy></p>
+      <div class="demo-modal-actions">
+        <a href="#" class="btn-primary" data-demo-primary>Continue</a>
+        <button class="btn-secondary" type="button" data-demo-close>Close</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  return modal;
 }

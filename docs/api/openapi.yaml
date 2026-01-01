@@ -31,6 +31,98 @@ paths:
         "200":
           description: Service is healthy
 
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Demo login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string, format: password }
+      responses:
+        "200":
+          description: Demo auth session
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AuthResponse" }
+
+  /auth/signup:
+    post:
+      tags: [Auth]
+      summary: Demo signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, email, password]
+              properties:
+                username: { type: string }
+                email: { type: string, format: email }
+                password: { type: string, format: password }
+      responses:
+        "201":
+          description: Demo account created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AuthResponse" }
+
+  /auth/verify:
+    get:
+      tags: [Auth]
+      summary: Verify demo token
+      parameters:
+        - in: query
+          name: token
+          schema: { type: string }
+      responses:
+        "200":
+          description: Token verified
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  verifiedAt: { type: string, format: date-time }
+                  user: { $ref: "#/components/schemas/User" }
+        "401":
+          description: Invalid token
+
+  /demo/entry:
+    post:
+      tags: [Auth]
+      summary: Demo entry confirmation
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label: { type: string }
+                entryType: { type: string }
+                target: { type: string }
+                source: { type: string }
+      responses:
+        "200":
+          description: Entry accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  entryId: { type: string }
+                  receivedAt: { type: string, format: date-time }
+
   /sports/leagues:
     get:
       tags: [Sports]
@@ -451,6 +543,27 @@ paths:
 
 components:
   schemas:
+    User:
+      type: object
+      properties:
+        id: { type: string }
+        username: { type: string }
+        email: { type: string, format: email }
+        tier: { type: string }
+        status: { type: string }
+        verified: { type: boolean }
+        createdAt: { type: string, format: date-time }
+        lastLoginAt: { type: string, format: date-time }
+
+    AuthResponse:
+      type: object
+      properties:
+        token: { type: string }
+        tokenType: { type: string }
+        issuedAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+        user: { $ref: "#/components/schemas/User" }
+
     RealTimeMeta:
       type: object
       properties:

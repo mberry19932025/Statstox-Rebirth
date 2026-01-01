@@ -139,9 +139,85 @@
         <h2>Username</h2>
         <p class="muted-text">Tier: Free</p>
         <p class="muted-text">Balance: $250.00</p>
-        <p class="muted-text">StatCoin: 120 STX</p>
+        <p class="muted-text">StatCoin: 120 STX (in-app)</p>
       </div>
 
+    </section>
+
+    <section class="content-card daily-spin-card" data-daily-spin>
+      <div class="daily-spin-head">
+        <div>
+          <h2>Daily Login Spin</h2>
+          <p class="muted-text">Check in each day to earn demo rewards.</p>
+        </div>
+        <span class="stat-chip">Free</span>
+      </div>
+
+      <div class="daily-spin-body">
+        <div class="spin-wheel" data-spin-wheel>
+          <div class="spin-pointer" aria-hidden="true"></div>
+          <div class="spin-center">Spin</div>
+        </div>
+        <div class="spin-rewards">
+          <div class="spin-reward"><span>5 STX</span><span>Common</span></div>
+          <div class="spin-reward"><span>10 STX</span><span>Uncommon</span></div>
+          <div class="spin-reward"><span>15 STX</span><span>Rare</span></div>
+          <div class="spin-reward"><span>VIP Boost</span><span>Limited</span></div>
+        </div>
+      </div>
+
+      <div class="spin-actions">
+        <button class="btn-primary" type="button" data-spin-btn data-auth-required data-auth-locked-label="Sign In">Spin Now</button>
+        <span class="spin-status" data-spin-status>Available now</span>
+      </div>
+      <p class="muted-text">Demo credits only. No cash value.</p>
+    </section>
+
+    <section class="content-card daily-spin-card" data-daily-bonus>
+      <div class="daily-spin-head">
+        <div>
+          <h2>Daily Bonus Ladder</h2>
+          <p class="muted-text">Log in daily to build streak rewards.</p>
+        </div>
+        <span class="stat-chip">Streak</span>
+      </div>
+
+      <div class="bonus-streak">
+        <div class="bonus-day is-active">
+          <span>Day 1</span>
+          <strong>5 STX</strong>
+        </div>
+        <div class="bonus-day">
+          <span>Day 2</span>
+          <strong>8 STX</strong>
+        </div>
+        <div class="bonus-day">
+          <span>Day 3</span>
+          <strong>12 STX</strong>
+        </div>
+        <div class="bonus-day">
+          <span>Day 4</span>
+          <strong>15 STX</strong>
+        </div>
+        <div class="bonus-day">
+          <span>Day 5</span>
+          <strong>18 STX</strong>
+        </div>
+        <div class="bonus-day">
+          <span>Day 6</span>
+          <strong>22 STX</strong>
+        </div>
+        <div class="bonus-day bonus-final">
+          <span>Day 7</span>
+          <strong>VIP Boost</strong>
+        </div>
+      </div>
+
+      <div class="spin-actions">
+        <button class="btn-secondary" type="button" data-auth-required data-auth-locked-label="Sign In">Claim Daily Bonus</button>
+        <span class="spin-status">Streak: 1 day</span>
+      </div>
+      <p class="muted-text">Bonuses are in-app StatCoin credits only.</p>
     </section>
 
     <!-- ================= ACCOUNT OPTIONS ================= -->
@@ -186,6 +262,7 @@
 <script src="./js/utils/format.utils.js" defer></script>
 <script src="./js/utils/tier.utils.js" defer></script>
 <script src="./js/account.js" defer></script>
+<script src="./js/daily-spin.js" defer></script>
 <footer class="global-footer">
   <div class="footer-inner">
     <div class="footer-brand">

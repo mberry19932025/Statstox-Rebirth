@@ -119,62 +119,220 @@
 
 <!-- ================= MAIN ================= -->
   <main class="page-content">
+    <header class="page-header player-board-header">
+      <div>
+        <h1>Player Board</h1>
+        <p class="subtext">DFS insights and market movement for a single athlete.</p>
+      </div>
+      <span class="stat-chip" data-live-updated data-live-prefix="Updated"></span>
+    </header>
 
-    <!-- PLAYER HEADER -->
-    <section class="player-header">
-      <div class="player-header-left">
-        <img
-          src="./images/player-silhouette.png"
-          alt="Player silhouette"
-          class="player-board-avatar"
-        />
+    <section class="player-board-hero content-card">
+      <div class="player-hero-main">
+        <div class="player-hero-avatar-wrap">
+          <img
+            src="./images/player-silhouette.png"
+            alt="Player silhouette"
+            class="player-board-avatar player-hero-avatar"
+            data-player-avatar
+          />
+        </div>
+
+        <div class="player-hero-info">
+          <h2 class="player-hero-name" data-player-name>Josh Allen</h2>
+          <p class="player-hero-meta" data-player-meta>QB · BUF · NFL</p>
+
+          <div class="player-hero-tags">
+            <span class="status open" data-player-status>Active</span>
+            <span class="stat-chip" data-player-tier>Core</span>
+            <span class="stat-chip" data-player-signal>Neutral</span>
+          </div>
+
+          <div class="player-hero-actions">
+            <button class="btn-primary" data-auth-required data-auth-locked-label="Sign in to trade">Trade Shares</button>
+            <button class="btn-secondary">Add to Lineup</button>
+            <button class="btn-secondary">Watchlist</button>
+          </div>
+        </div>
       </div>
 
-      <div class="player-header-right">
-        <h1 class="player-name">Josh Allen</h1>
-        <p class="player-meta">QB · Buffalo Bills · NFL</p>
-        <p class="player-salary">$7,200</p>
+      <div class="player-hero-metrics">
+        <div class="metric-card">
+          <span class="metric-label">DFS Salary</span>
+          <span class="metric-value" data-player-salary>$7,200</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Projection</span>
+          <span class="metric-value" data-player-projection>24.8</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Ownership</span>
+          <span class="metric-value" data-player-ownership>12%</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Market Price</span>
+          <span class="metric-value" data-player-price>$18.40</span>
+        </div>
       </div>
     </section>
 
-    <!-- ================= PROJECTIONS ================= -->
-    <section class="player-projections">
-
-      <h2>Projections</h2>
-
-      <div class="projection-grid">
-
-        <div class="projection-card">
-          <span class="label">Passing Yards</span>
-          <span class="value">275.5</span>
+    <div class="player-board-grid">
+      <section class="content-card player-board-dfs">
+        <div class="card-header">
+          <h3>DFS Snapshot</h3>
+          <span class="status open" data-dfs-status>Open</span>
         </div>
 
-        <div class="projection-card">
-          <span class="label">Passing TDs</span>
-          <span class="value">2.5</span>
+        <div class="stat-list">
+          <div class="stat-row">
+            <span>Matchup</span>
+            <strong data-player-matchup>BUF vs KC</strong>
+          </div>
+          <div class="stat-row">
+            <span>Start Time</span>
+            <strong data-player-start>8:20 PM ET</strong>
+          </div>
+          <div class="stat-row">
+            <span>Lineup Slot</span>
+            <strong data-player-slot>QB</strong>
+          </div>
+          <div class="stat-row stat-row-split">
+            <span>Ceiling / Floor</span>
+            <div class="stat-pair">
+              <strong data-player-ceiling>32.5</strong>
+              <span class="stat-divider">/</span>
+              <strong data-player-floor>18.2</strong>
+            </div>
+          </div>
+          <div class="stat-row">
+            <span>Ownership</span>
+            <strong data-player-ownership-inline>12%</strong>
+          </div>
         </div>
 
-        <div class="projection-card">
-          <span class="label">Rushing Yards</span>
-          <span class="value">34.5</span>
+        <div class="lock-panel" data-lock-in-minutes="45" data-lock-target=".dfs-entry-actions">
+          <div class="lock-row">
+            <span class="status open" data-lock-badge>Open</span>
+            <div class="lock-copy">
+              <strong>Projection Lock</strong>
+              <span class="lock-meta" data-lock-meta>Locks in 45m</span>
+            </div>
+          </div>
         </div>
 
-        <div class="projection-card">
-          <span class="label">Fantasy Points</span>
-          <span class="value highlight">24.8</span>
+        <div class="dfs-entry-actions">
+          <button class="btn-primary" data-auth-required data-auth-locked-label="Sign in to enter">Enter DFS</button>
+          <button class="btn-secondary">Build Lineup</button>
+        </div>
+      </section>
+
+      <section class="content-card player-board-market">
+        <div class="card-header">
+          <h3>Market Snapshot</h3>
+          <span class="stat-chip" data-player-change>+0.60</span>
         </div>
 
-      </div>
-    </section>
+        <div class="stat-list">
+          <div class="stat-row">
+            <span>Signal</span>
+            <strong data-player-signal-text>Bullish</strong>
+          </div>
+          <div class="stat-row">
+            <span>Volume</span>
+            <strong data-player-volume>1,540</strong>
+          </div>
+          <div class="stat-row">
+            <span>Day Trade Limit</span>
+            <strong data-player-daytrade>6 trades</strong>
+          </div>
+          <div class="stat-row">
+            <span>Contract Expiry</span>
+            <strong data-player-contract>Feb 15, 2025</strong>
+          </div>
+          <div class="stat-row">
+            <span>Spread / Fee</span>
+            <strong data-player-spread>35 bps</strong>
+          </div>
+          <div class="stat-row">
+            <span>Position Cap</span>
+            <strong data-player-position-cap>1,000 shares</strong>
+          </div>
+        </div>
 
-    <!-- ================= MARKET ACTION ================= -->
-    <section class="player-actions">
+        <div class="market-entry-actions">
+          <button class="btn-primary" data-auth-required data-auth-locked-label="Sign in to trade">Open Trade Ticket</button>
+          <button class="btn-secondary">Set Price Alert</button>
+        </div>
+      </section>
+    </div>
 
-      <button class="btn-primary">Buy Shares</button>
-      <button class="btn-secondary">Add to Watchlist</button>
+    <div class="player-board-grid secondary">
+      <section class="content-card">
+        <div class="card-header">
+          <h3>Projection Breakdown</h3>
+          <span class="stat-chip" data-live-updated data-live-prefix="Updated"></span>
+        </div>
 
-    </section>
+        <div class="projection-grid" data-player-projections>
+          <div class="projection-card">
+            <span class="label">Passing Yards</span>
+            <span class="value">275.5</span>
+          </div>
+          <div class="projection-card">
+            <span class="label">Passing TDs</span>
+            <span class="value">2.5</span>
+          </div>
+          <div class="projection-card">
+            <span class="label">Rushing Yards</span>
+            <span class="value">34.5</span>
+          </div>
+          <div class="projection-card">
+            <span class="label">Fantasy Points</span>
+            <span class="value highlight">24.8</span>
+          </div>
+        </div>
+      </section>
 
+      <section class="content-card">
+        <div class="card-header">
+          <h3>Recent Game Log</h3>
+          <span class="stat-chip">Last 5</span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="player-board-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Opp</th>
+                <th>Line</th>
+                <th class="align-right">FP</th>
+              </tr>
+            </thead>
+            <tbody data-player-gamelog>
+              <tr>
+                <td>Sep 15</td>
+                <td>MIA</td>
+                <td>312 YDS · 3 TD</td>
+                <td class="align-right">31.2</td>
+              </tr>
+              <tr>
+                <td>Sep 08</td>
+                <td>NYJ</td>
+                <td>287 YDS · 2 TD</td>
+                <td class="align-right">27.4</td>
+              </tr>
+              <tr>
+                <td>Sep 01</td>
+                <td>LAR</td>
+                <td>254 YDS · 2 TD</td>
+                <td class="align-right">24.1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
   </main>
   <!-- ================= END MAIN ================= -->
 <!-- ================= SCRIPTS ================= -->

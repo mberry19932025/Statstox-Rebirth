@@ -117,29 +117,143 @@
 <main class="page-content">
 
   <header class="page-header">
-    <h1>Locker Room</h1>
-    <p>Your active entries, picks, and performance</p>
+    <h1 class="glow-text">Locker Room</h1>
+    <p>Team bays, active slips, and the signal wall</p>
+    <div class="arena-meta">
+      <span class="stat-chip">Active Entries</span>
+      <span class="stat-chip">Signal Wall</span>
+      <span class="stat-chip">Season Gear</span>
+    </div>
   </header>
 
   <section class="locker-surface">
+    <div class="locker-header">
+      <div>
+        <h2>Locker Wall</h2>
+        <p class="locker-sub">Track slips, lineups, and market exposure like a real team bay.</p>
+      </div>
+      <div class="locker-bench">
+        <span class="stat-chip">Bench</span>
+        <span class="stat-chip">Warmups</span>
+        <span class="stat-chip">Recovery</span>
+      </div>
+    </div>
+
     <div class="locker-grid">
       <article class="locker-card">
+        <span class="locker-tag">Bay 01</span>
         <h3>Active Entry</h3>
         <p>NFL 5-Pick Slip</p>
+        <div class="locker-meta">Locks 7:45 PM ET</div>
         <span class="status pending">In Progress</span>
+        <div class="locker-vent"><span></span><span></span><span></span></div>
       </article>
 
       <article class="locker-card">
+        <span class="locker-tag">Bay 02</span>
         <h3>Completed</h3>
-        <p>NBA Draft — 2nd Place</p>
+        <p>NBA Draft - 2nd Place</p>
+        <div class="locker-meta">Payout posted</div>
         <span class="status win">+$450</span>
+        <div class="locker-vent"><span></span><span></span><span></span></div>
       </article>
 
       <article class="locker-card">
-        <h3>Portfolio</h3>
-        <p>Market Exposure: $1,200</p>
+        <span class="locker-tag">Bay 03</span>
+        <h3>Market Exposure</h3>
+        <p>Active shares: 6 players</p>
+        <div class="locker-meta">Portfolio: $1,200</div>
+        <span class="status neutral">Balanced</span>
+        <div class="locker-vent"><span></span><span></span><span></span></div>
+      </article>
+
+      <article class="locker-card">
+        <span class="locker-tag">Bay 04</span>
+        <h3>Signal Queue</h3>
+        <p>3 signals scheduled</p>
+        <div class="locker-meta">Next drop: 8:05 PM ET</div>
+        <span class="status live">Queued</span>
+        <div class="locker-vent"><span></span><span></span><span></span></div>
+      </article>
+
+      <article class="locker-card">
+        <span class="locker-tag">Bay 05</span>
+        <h3>Team Gear</h3>
+        <p>Avatar loadout ready</p>
+        <div class="locker-meta">VIP trim enabled</div>
+        <span class="status success">Equipped</span>
+        <div class="locker-vent"><span></span><span></span><span></span></div>
+      </article>
+
+      <article class="locker-card">
+        <span class="locker-tag">Bay 06</span>
+        <h3>Tonight's Focus</h3>
+        <p>NBA, NHL, and live props</p>
+        <div class="locker-meta">Last update: 2m ago</div>
+        <span class="status live">Live</span>
+        <div class="locker-vent"><span></span><span></span><span></span></div>
       </article>
     </div>
+  </section>
+
+  <section class="content-card signal-composer">
+    <h2>Signal Wall</h2>
+    <p class="muted-text">Send signals like tweets to your squad and locker room.</p>
+    <textarea placeholder="Drop a signal: matchup edge, prop lean, or market move..."></textarea>
+    <div class="signal-actions">
+      <div class="signal-tags">
+        <span class="stat-chip">Signal</span>
+        <span class="stat-chip">Market</span>
+        <span class="stat-chip">Draft</span>
+      </div>
+      <button class="btn-primary" type="button" data-auth-required data-auth-locked-label="Sign In">Send Signal</button>
+    </div>
+  </section>
+
+  <section class="signal-feed">
+    <article class="feed-card signal-card">
+      <div class="feed-row">
+        <div class="avatar-wrap">
+          <img src="./images/player-silhouette.png" alt="User Avatar">
+        </div>
+        <div class="feed-content">
+          <strong>@StoxCaptain</strong>
+          <div class="signal-meta">
+            <span class="stat-chip">Signal</span>
+            <span>2m ago</span>
+            <span>Market Arena</span>
+          </div>
+          <p class="text">Momentum Run is heating up. Holding Josh Allen with +2.4% swing.</p>
+        </div>
+      </div>
+      <div class="feed-actions">
+        <button class="feed-action" type="button" data-action="like" data-count="18">Like</button>
+        <button class="feed-action" type="button" data-action="comment" data-count="4">Reply</button>
+        <button class="feed-action" type="button" data-action="share" data-count="2">Repost</button>
+      </div>
+    </article>
+
+    <article class="feed-card signal-card">
+      <div class="feed-row">
+        <div class="avatar-wrap">
+          <img src="./images/player-silhouette.png" alt="User Avatar">
+        </div>
+        <div class="feed-content">
+          <strong>@LockerLead</strong>
+          <div class="signal-meta">
+            <span class="stat-chip">Draft</span>
+            <span>12m ago</span>
+            <span>Draft Arena</span>
+          </div>
+          <p class="text">Late swap coming. Target high pace wing with a projection bump.</p>
+        </div>
+      </div>
+      <div class="feed-actions">
+        <button class="feed-action" type="button" data-action="like" data-count="9">Like</button>
+        <button class="feed-action" type="button" data-action="comment" data-count="3">Reply</button>
+        <button class="feed-action" type="button" data-action="share" data-count="1">Repost</button>
+      </div>
+    </article>
   </section>
 
 </main>

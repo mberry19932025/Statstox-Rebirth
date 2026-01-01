@@ -1,9 +1,20 @@
-<!DOCTYPE html>
+<!DtOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>StatStox Pitch Deck</title>
+  <meta name="description" content="StatStox pitch deck — DFS + player market + social, built to change the game."/>
+  <meta property="og:title" content="StatStox Pitch Deck"/>
+  <meta property="og:description" content="DFS + player market + social. Built to change the game."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://mberry19932025.github.io/Statstox-Rebirth/docs/pitch/StatStox_Deck.html"/>
+  <meta property="og:image" content="https://mberry19932025.github.io/Statstox-Rebirth/images/logo.png"/>
+  <meta property="og:site_name" content="StatStox"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="StatStox Pitch Deck"/>
+  <meta name="twitter:description" content="DFS + player market + social. Built to change the game."/>
+  <meta name="twitter:image" content="https://mberry19932025.github.io/Statstox-Rebirth/images/logo.png"/>
   <style>
     :root{
       --bg:#050807;
@@ -39,6 +50,24 @@
       flex-direction:column;
       gap:18px;
       align-items:flex-start;
+      position:relative;
+      overflow:hidden;
+    }
+    .slide::before{
+      content:"";
+      position:absolute;
+      inset:-60% -40%;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0,255,136,.08), transparent 40%),
+        linear-gradient(120deg, transparent 35%, rgba(0,255,136,.18), transparent 65%),
+        linear-gradient(160deg, rgba(0,0,0,.7), transparent 60%);
+      opacity:.35;
+      pointer-events:none;
+      animation:deckSheen 18s linear infinite;
+    }
+    .slide > *{
+      position:relative;
+      z-index:1;
     }
     .kicker{
       color:var(--green);
@@ -95,6 +124,10 @@
       gap:12px;
       grid-template-columns: repeat(2, minmax(0,1fr));
     }
+    @keyframes deckSheen{
+      0%{ transform:translateX(-20%); }
+      100%{ transform:translateX(20%); }
+    }
     @media (max-width: 720px){
       .deck{ padding:16px; }
       .slide{ min-height:auto; padding:24px; }
@@ -147,7 +180,7 @@
       <ul>
         <li>DFS contests + player market + social feeds in one hub.</li>
         <li>Projection locks and payout caps keep it fair.</li>
-        <li>StatCoin credits power rewards, off-chain and compliant.</li>
+        <li>StatCoin credits funded via supported rails (including crypto deposits), used only in-app.</li>
       </ul>
     </section>
 
@@ -176,7 +209,7 @@
       <ul>
         <li>Player prices move with performance data.</li>
         <li>Projection locks remove late edge.</li>
-        <li>StatCoin credits reward engagement, not equity.</li>
+        <li>StatCoin credits reward engagement with no equity rights.</li>
       </ul>
     </section>
 
@@ -194,7 +227,7 @@
     <section class="slide">
       <div class="kicker">Founder Story</div>
       <h2>Built From Love Of Sports</h2>
-      <p class="muted">Micheal Berry has cerebral palsy and built StatStox to make sports competition more accessible, social, and fair for everyone. This is a mission-led platform built to unite fans and empower new voices.</p>
+      <p class="muted">Micheal Berry lives with cerebral palsy and turned physical limitations into fuel to build StatStox, pursuing the American dream of entrepreneurship. I want to create an opportunity by unifying my skills and love of sports. <strong>When passion meets skill it equals integrity!</strong> This mission-led platform makes sports competition more accessible, social, and fair for everyone.</p>
     </section>
 
     <section class="slide">
@@ -257,7 +290,7 @@
       </ul>
       <div class="chips">
         <span class="chip">Let’s Build Together</span>
-        <span class="chip gold">Founder Retains 85%</span>
+        <span class="chip gold">Founder retains 85% ownership</span>
       </div>
     </section>
   </main>

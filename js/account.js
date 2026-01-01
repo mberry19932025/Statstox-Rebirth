@@ -6,6 +6,7 @@ const PAGE_ID = 'account';
 
 document.addEventListener('DOMContentLoaded', () => {
   const status = document.getElementById('accountStatus');
+  if (!status) return;
 
   // Frontend-only simulated account flags
   const hasDeposit = document.body.dataset.depositEligible === 'true';

@@ -118,26 +118,28 @@
 
 <header class="page-header">
   <h1>Player List</h1>
-  <p>Quick-view player pricing</p>
+  <p>Quick-view market pricing and player status</p>
+  <div class="arena-meta">
+    <span class="stat-chip">Market Quotes</span>
+    <span class="stat-chip">Live Updates</span>
+    <span class="stat-chip" data-live-updated data-live-prefix="Updated">Updated --:--</span>
+  </div>
 </header>
 
-<section class="arena-card">
-
-  <div class="portfolio-row">
-    <span>Anthony Gridlock · QB (NFL)</span>
-    <strong>$6,900</strong>
+<section class="arena-card player-list-card">
+  <div class="player-list-header">
+    <span>Player</span>
+    <span>Pos / League</span>
+    <span class="align-right">Market</span>
   </div>
-
-  <div class="portfolio-row">
-    <span>Janelle Nova · SG (NBA)</span>
-    <strong>$7,450</strong>
+  <div class="player-list-body" data-player-list>
+    <div class="player-row is-loading">
+      <span>Loading players...</span>
+      <span class="player-meta">Syncing live quotes</span>
+      <span class="align-right">--</span>
+    </div>
   </div>
-
-  <div class="portfolio-row">
-    <span>Alexis Vector · WR (NFL)</span>
-    <strong>$5,800</strong>
-  </div>
-
+  <p class="muted-text">Market prices reflect demo quotes. DFS salaries live inside Draft Arena.</p>
 </section>
 
 
